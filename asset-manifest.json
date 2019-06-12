@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/socialbook/static/css/main.34de6062.chunk.css",
+    "main.js": "/socialbook/static/js/main.cd94db84.chunk.js",
+    "main.js.map": "/socialbook/static/js/main.cd94db84.chunk.js.map",
+    "runtime~main.js": "/socialbook/static/js/runtime~main.650fe429.js",
+    "runtime~main.js.map": "/socialbook/static/js/runtime~main.650fe429.js.map",
+    "static/js/2.3310f33a.chunk.js": "/socialbook/static/js/2.3310f33a.chunk.js",
+    "static/js/2.3310f33a.chunk.js.map": "/socialbook/static/js/2.3310f33a.chunk.js.map",
+    "index.html": "/socialbook/index.html",
+    "precache-manifest.8206d706babd0e86604d7b74763be938.js": "/socialbook/precache-manifest.8206d706babd0e86604d7b74763be938.js",
+    "service-worker.js": "/socialbook/service-worker.js",
+    "static/css/main.34de6062.chunk.css.map": "/socialbook/static/css/main.34de6062.chunk.css.map"
+  }
+}
