@@ -1,31 +1,31 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-import { withFirebase } from '../Firebase';
-import * as ROUTES from '../../constants/routes';
+import { withFirebase } from "../Firebase";
+import * as ROUTES from "../../constants/routes";
 
-const PasswordForgetPage = () => (
-  <div>
-    <h1>PasswordForget</h1>
-    <PasswordForgetForm />
-  </div>
-);
+const PasswordForgetPage = () => {
+  return (
+    <div>
+      <h1>PasswordForget</h1>
+      <PasswordForgetForm />
+    </div>
+  );
+};
 
 const INITIAL_STATE = {
-  email: '',
-  error: null,
+  email: "",
+  error: null
 };
 
 class PasswordForgetFormBase extends Component {
   constructor(props) {
     super(props);
-
     this.state = { ...INITIAL_STATE };
   }
 
   onSubmit = event => {
     const { email } = this.state;
-
     this.props.firebase
       .doPasswordReset(email)
       .then(() => {
@@ -34,7 +34,6 @@ class PasswordForgetFormBase extends Component {
       .catch(error => {
         this.setState({ error });
       });
-
     event.preventDefault();
   };
 
@@ -44,9 +43,7 @@ class PasswordForgetFormBase extends Component {
 
   render() {
     const { email, error } = this.state;
-
-    const isInvalid = email === '';
-
+    const isInvalid = email === "";
     return (
       <form onSubmit={this.onSubmit}>
         <input
@@ -54,26 +51,22 @@ class PasswordForgetFormBase extends Component {
           value={this.state.email}
           onChange={this.onChange}
           type="text"
-          placeholder="Email Address"
+          placeholder="Email"
         />
         <button disabled={isInvalid} type="submit">
-          Reset My Password
+          Resetear Contraseña
         </button>
-
-        {error && <p>{error.message}</p>}
+        {error && <p> {error.message} </p>}
       </form>
     );
   }
 }
 
 const PasswordForgetLink = () => (
-  <p>
-    <Link to={ROUTES.PASSWORD_FORGET}>Forgot Password?</Link>
-  </p>
+  <React.Fragment>
+    <Link to={ROUTES.PASSWORD_FORGET}> Olvidé mi contraseña</Link>{" "}
+  </React.Fragment>
 );
-
 export default PasswordForgetPage;
-
 const PasswordForgetForm = withFirebase(PasswordForgetFormBase);
-
 export { PasswordForgetForm, PasswordForgetLink };

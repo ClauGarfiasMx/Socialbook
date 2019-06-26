@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { withFirebase } from '../Firebase';
+import { withFirebase } from "../Firebase";
 
 const INITIAL_STATE = {
-  passwordOne: '',
-  passwordTwo: '',
-  error: null,
+  passwordOne: "",
+  passwordTwo: "",
+  error: null
 };
 
 class PasswordChangeForm extends Component {
@@ -37,8 +37,7 @@ class PasswordChangeForm extends Component {
   render() {
     const { passwordOne, passwordTwo, error } = this.state;
 
-    const isInvalid =
-      passwordOne !== passwordTwo || passwordOne === '';
+    const isInvalid = passwordOne !== passwordTwo || passwordOne === "";
 
     return (
       <form onSubmit={this.onSubmit}>
@@ -47,17 +46,17 @@ class PasswordChangeForm extends Component {
           value={passwordOne}
           onChange={this.onChange}
           type="password"
-          placeholder="New Password"
+          placeholder="Nueva contraseña"
         />
         <input
           name="passwordTwo"
           value={passwordTwo}
           onChange={this.onChange}
           type="password"
-          placeholder="Confirm New Password"
+          placeholder="Confirmar contraseña"
         />
         <button disabled={isInvalid} type="submit">
-          Reset My Password
+          Cambiar mi Contraseña
         </button>
 
         {error && <p>{error.message}</p>}

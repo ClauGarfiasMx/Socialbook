@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-import { withFirebase } from '../Firebase';
-import * as ROUTES from '../../constants/routes';
+import { withFirebase } from "../Firebase";
+import * as ROUTES from "../../constants/routes";
 
 class UserList extends Component {
   constructor(props) {
@@ -10,27 +10,37 @@ class UserList extends Component {
 
     this.state = {
       loading: false,
-      users: [],
+      users: []
     };
   }
 
+  // componentDidMount() {
+  //   this.setState({ loading: true });
+
+  //   this.unsubscribe = this.props.firebase.users().onSnapshot(querySnapshot => {
+  //     var user = [];
+
+  //     querySnapshot.docs.map(e => {
+  //       const usersincome = { userID: e.id, userData: e.data() };
+  //       user.push(usersincome);
+  //       return user;
+  //     });
+  //     this.setState({ users: user, loading: false });
+  //   });
+  // }
   componentDidMount() {
     this.setState({ loading: true });
 
-    this.unsubscribe = this.props.firebase
-      .users()
-      .onSnapshot(snapshot => {
-        let users = [];
+    this.unsubscribe = this.props.firebase.users().onSnapshot(snapshot => {
+      let users = [];
 
-        snapshot.forEach(doc =>
-          users.push({ ...doc.data(), uid: doc.id }),
-        );
+      snapshot.forEach(doc => users.push({ ...doc.data(), uid: doc.id }));
 
-        this.setState({
-          users,
-          loading: false,
-        });
+      this.setState({
+        users,
+        loading: false
       });
+    });
   }
 
   componentWillUnmount() {
@@ -60,7 +70,7 @@ class UserList extends Component {
                 <Link
                   to={{
                     pathname: `${ROUTES.ADMIN}/${user.uid}`,
-                    state: { user },
+                    state: { user }
                   }}
                 >
                   Details

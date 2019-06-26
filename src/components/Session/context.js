@@ -1,5 +1,5 @@
-import React from "react";
+import React from 'react';
 
-const AuthUserContext = React.createContext(null); //Context to pass authUser state to all components interested
+const AuthUserContext = React.createContext(null);
 
 export default AuthUserContext;
