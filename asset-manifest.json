@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/socialbook/static/css/main.d4e7a1b6.chunk.css",
-    "main.js": "/socialbook/static/js/main.10d5d216.chunk.js",
-    "main.js.map": "/socialbook/static/js/main.10d5d216.chunk.js.map",
+    "main.js": "/socialbook/static/js/main.77c6f0b4.chunk.js",
+    "main.js.map": "/socialbook/static/js/main.77c6f0b4.chunk.js.map",
     "runtime~main.js": "/socialbook/static/js/runtime~main.650fe429.js",
     "runtime~main.js.map": "/socialbook/static/js/runtime~main.650fe429.js.map",
     "static/css/2.5ec480d0.chunk.css": "/socialbook/static/css/2.5ec480d0.chunk.css",
     "static/js/2.72501257.chunk.js": "/socialbook/static/js/2.72501257.chunk.js",
     "static/js/2.72501257.chunk.js.map": "/socialbook/static/js/2.72501257.chunk.js.map",
     "index.html": "/socialbook/index.html",
-    "precache-manifest.8c3f8510c21aff55a1251b338d04dbe0.js": "/socialbook/precache-manifest.8c3f8510c21aff55a1251b338d04dbe0.js",
+    "precache-manifest.594649ce741d83767835151d5dabc49c.js": "/socialbook/precache-manifest.594649ce741d83767835151d5dabc49c.js",
     "service-worker.js": "/socialbook/service-worker.js",
     "static/css/2.5ec480d0.chunk.css.map": "/socialbook/static/css/2.5ec480d0.chunk.css.map",
     "static/css/main.d4e7a1b6.chunk.css.map": "/socialbook/static/css/main.d4e7a1b6.chunk.css.map"
