@@ -1,5 +1,5 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-Messages/
+src/components/Messages/
 .env
 # dependencies
 /node_modules
