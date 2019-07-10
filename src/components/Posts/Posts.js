@@ -1,22 +1,31 @@
 import React, { Component } from "react";
-import UploadImage from "./UploadImage";
+import { UploadImage } from "./UploadImage";
 import { withFirebase } from "../Firebase";
-// import { getMoment } from "../Utils";
+import PostsList from "./PostsList";
+// import TextArea from "./TextArea";
 // import { AuthUserContext } from "../Session";
-// import styled from "styled-components";
+import styled from "styled-components";
 //
 
-class CreatePostBase extends Component {
+const TextArea = styled.textarea`
+  width: 50%;
+  resize: none;
+  overflow: auto;
+`;
+
+const INITIAL_STATE = {
+  authorID: "",
+  bookIt: 0,
+  error: null,
+  images: {},
+  isPublic: false,
+  text: ""
+};
+class PostsBase extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      authorID: "",
-      createdAt: this.props.firebase.fieldValue.serverTimestamp(),
-      images: {},
-      isPublic: false,
-      error: null,
-      text: "",
-      username: ""
+      ...INITIAL_STATE
     };
     this.handleImageChange = this.handleImageChange.bind(this);
     this.createPost = this.createPost.bind(this);
@@ -25,10 +34,9 @@ class CreatePostBase extends Component {
   onChangeText = event => {
     this.setState({
       text: event.target.value,
-      username: this.props.firebase.activeUser.username,
       authorID: this.props.firebase.activeUser.uid
     });
-    console.log(this.state.text);
+    // console.log(this.state.text);
   };
   onChangeCheckbox = event => {
     this.setState({ isPublic: event.target.checked });
@@ -45,7 +53,7 @@ class CreatePostBase extends Component {
         .split(".")
         .pop()
         .toLowerCase();
-      const isImage = fileTypes.indexOf(extension) > -1; //&& file.size < 5000
+      const isImage = fileTypes.indexOf(extension) > -1;
 
       const size = file.size < 1048487;
       if (!isImage) {
@@ -60,7 +68,7 @@ class CreatePostBase extends Component {
         });
       } else {
         this.setState({ error: null });
-        console.log(file);
+        // console.log(file);
         reader.onloadend = () => {
           this.setState({
             error: null,
@@ -73,20 +81,16 @@ class CreatePostBase extends Component {
   }
 
   createPost() {
-    console.log(this.state);
     this.props.firebase
       .posts()
-      .add(this.state)
+      .add({
+        username: this.props.firebase.activeUser.username,
+        createdAt: new Date(),
+        ...this.state
+      })
       .then(() => {
-        this.setState({
-          authorID: "",
-          createdAt: this.props.firebase.fieldValue.serverTimestamp(),
-          images: {},
-          isPublic: false,
-          error: null,
-          text: "",
-          username: ""
-        });
+        console.log(this.state);
+        this.setState({ ...INITIAL_STATE });
         console.log("Document successfully written!");
         console.log(this.state);
       })
@@ -95,13 +99,6 @@ class CreatePostBase extends Component {
       });
   }
 
-  componentDidUpdate() {
-    console.log(this.state.username);
-  }
-
-  componentWillMount() {
-    this.mounted = false;
-  }
   render() {
     const isInvalid = this.state.error != null || this.state.text === "";
 
@@ -112,7 +109,11 @@ class CreatePostBase extends Component {
           <label> {this.props.firebase.activeUser.username}</label>
         </h2>
         <h3>Comparte tu último descubrimiento:</h3>
-        <input type="text" onChange={this.onChangeText} />
+        <TextArea
+          type="text"
+          onChange={this.onChangeText}
+          value={this.state.text}
+        />
         <label>
           Post privado (visible sólo en mi club):
           <input
@@ -124,7 +125,8 @@ class CreatePostBase extends Component {
           />
         </label>
         <UploadImage
-          handleImageChange={this.handleImageChange}
+          buttonLabel={"Subir Imagen"}
+          handleImage={this.handleImageChange}
           imageUrl={this.state.images.imageUrl}
           error={this.state.error}
         />
@@ -138,11 +140,19 @@ class CreatePostBase extends Component {
         >
           Publicar
         </button>
+        <button
+          onClick={() => {
+            this.setState({ ...INITIAL_STATE });
+          }}
+        >
+          Cancelar
+        </button>
+        <PostsList />
       </div>
     );
   }
 }
 
-const CreatePost = withFirebase(CreatePostBase);
+const Posts = withFirebase(PostsBase);
 
-export default CreatePost;
+export default Posts;
