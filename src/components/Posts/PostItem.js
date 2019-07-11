@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { UploadImageEdited } from "./UploadImage";
+import { UploadImage } from "./UploadImage";
 import styled from "styled-components";
 
 const ImageFromPost = styled.img`
@@ -96,13 +96,12 @@ class PostItem extends Component {
             />
             {post.images.imageUrl && (
               <div>
-                <UploadImageEdited
-                  handleImageEdit={this.handleImageEdit}
+                <UploadImage
+                  handleImage={this.handleImageEdit}
                   buttonLabel={"Actualizar Imagen"}
                   error={this.state.error}
-                  // imageUrl={images.imageUrl}
+                  imageUrl={images.imageUrl}
                 />
-                <ImageFromPost src={images.imageUrl} />
 
                 <button>Eliminar Imagen</button>
               </div>

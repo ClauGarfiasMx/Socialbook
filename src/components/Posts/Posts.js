@@ -8,9 +8,19 @@ import styled from "styled-components";
 //
 
 const TextArea = styled.textarea`
-  width: 50%;
-  resize: none;
-  overflow: auto;
+  background-color: #fff !important;
+  border: 1px solid #b6b6b6;
+  width: 30% !important;
+  -moz-border-radius: 1px solid #b6b6b6
+  -webkit-border-radius:1px solid #b6b6b6
+  border-radius: 5px;
+  font-family: Open Sans, Arial, sans-serif;
+  font-size: 15px;
+  color: #404b56 !important;
+  padding: 16px !important;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 `;
 
 const INITIAL_STATE = {
@@ -113,17 +123,23 @@ class PostsBase extends Component {
           type="text"
           onChange={this.onChangeText}
           value={this.state.text}
+          cols={"40"}
+          rows={"10"}
+          aria-required={true}
+          aria-invalid={false}
         />
-        <label>
-          Post privado (visible sólo en mi club):
-          <input
-            name="isPublic"
-            type="checkbox"
-            checked={this.state.isPublic}
-            value={false}
-            onChange={this.onChangeCheckbox}
-          />
-        </label>
+        <div>
+          <label>
+            Post privado (visible sólo en mi club):
+            <input
+              name="isPublic"
+              type="checkbox"
+              checked={this.state.isPublic}
+              value={false}
+              onChange={this.onChangeCheckbox}
+            />
+          </label>
+        </div>
         <UploadImage
           buttonLabel={"Subir Imagen"}
           handleImage={this.handleImageChange}
