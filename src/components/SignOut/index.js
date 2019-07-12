@@ -3,7 +3,7 @@ import { withFirebase } from "../Firebase";
 import Button from "../Button";
 
 const SignOutButton = ({ firebase }) => (
-  <Button name="Cerrar Sesión" action={firebase.doSignOut} />
+  <Button name="Sign Out" action={firebase.doSignOut} />
 );
 
 export default withFirebase(SignOutButton);

@@ -136,11 +136,11 @@ class PostsList extends Component {
                   <PostItem
                     authUser={authUser}
                     bookIt={this.bookIt}
+                    commentPost={this.commentPost}
                     deletePost={this.deletePost}
                     editPost={this.editPost}
                     incomingPosts={this.state.incomingPosts}
                     post={post}
-                    commentPost={this.commentPost}
                     key={post.uid}
                   />
                 ))}

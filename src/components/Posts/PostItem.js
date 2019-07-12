@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import UploadImage from "./UploadImage";
+import UploadImageTry from "./UploadImageTry";
 import CommentItem from "./CommentItem";
 import styled from "styled-components";
 
@@ -28,9 +29,10 @@ class PostItem extends Component {
       editMode: false,
       editText: this.props.post.text,
       error: null,
-      images: this.props.post.images
+      images: {}
     };
     this.handleImageEdit = this.handleImageEdit.bind(this);
+    this.uploadNewImage = this.uploadNewImage.bind(this);
     this.editPost = this.editPost.bind(this);
     this.cancelEdit = this.cancelEdit.bind(this);
     this.deleteImage = this.deleteImage.bind(this);
@@ -84,6 +86,10 @@ class PostItem extends Component {
     }
   }
 
+  uploadNewImage(images) {
+    this.setState({ images: images });
+  }
+
   deleteImage() {
     this.setState({ images: {} });
   }
@@ -123,13 +129,20 @@ class PostItem extends Component {
             />
             {post.images.imageUrl && (
               <div>
-                <UploadImage
+                {/* <UploadImage
                   handleImage={this.handleImageEdit}
                   buttonLabel={"Change Image"}
                   editMode={this.state.editMode}
                   error={this.state.error}
                   deleteImage={this.deleteImage}
                   imageUrl={images.imageUrl}
+                /> */}
+
+                <UploadImageTry
+                  uploadImage={this.uploadNewImage}
+                  buttonLabel={"Change Image Try"}
+                  editMode={this.state.editMode}
+                  deleteImage={this.deleteImage}
                 />
               </div>
             )}
@@ -189,6 +202,22 @@ class PostItem extends Component {
                   <button onClick={this.editPost}>Edit Post</button>
                   <button onClick={() => deletePost(post)}>Delete Post</button>
                 </div>
+              )}
+
+              {post.comments && (
+                <article>
+                  <p>Commments:</p>
+                  <div>
+                    {post.comments.map((comment, idx) => (
+                      <div key={idx}>
+                        <p>
+                          {comment.authorOfCommentName} commented:
+                          <i> {comment.text}</i>
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </article>
               )}
               <CommentItem
                 authUser={authUser}

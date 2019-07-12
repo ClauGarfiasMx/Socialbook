@@ -106,7 +106,7 @@ class SignInFormBase extends Component {
           placeholder="Contraseña"
         />
         <button disabled={isInvalid} type="submit">
-          Log In
+          Sign In
         </button>
 
         {error && (
@@ -119,7 +119,7 @@ class SignInFormBase extends Component {
 
 const SignInLink = () => (
   <React.Fragment>
-    <Link to={ROUTES.SIGN_IN}> Log In </Link>
+    <Link to={ROUTES.SIGN_IN}> Sign In </Link>
   </React.Fragment>
 );
 

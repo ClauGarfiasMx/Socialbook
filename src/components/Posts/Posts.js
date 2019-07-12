@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import UploadImage from "./UploadImage";
+import UploadImageTry from "./UploadImageTry";
 import { withFirebase } from "../Firebase";
 import PostsList from "./PostsList";
 // import TextArea from "./TextArea";
@@ -28,7 +29,7 @@ const INITIAL_STATE = {
   bookIt: 0,
   comments: [],
   error: null,
-  images: {},
+  // images: {},
   isPublic: false,
   text: ""
 };
@@ -40,6 +41,7 @@ class PostsBase extends Component {
     };
     this.handleImageChange = this.handleImageChange.bind(this);
     this.createPost = this.createPost.bind(this);
+    this.uploadImage = this.uploadImage.bind(this);
   }
 
   onChangeText = event => {
@@ -88,6 +90,10 @@ class PostsBase extends Component {
         reader.readAsDataURL(file);
       }
     }
+  }
+
+  uploadImage(images) {
+    this.setState({ images: images });
   }
 
   createPost() {
@@ -139,11 +145,16 @@ class PostsBase extends Component {
             Private (visible only in my club):
           </label>
         </div>
-        <UploadImage
+        {/* <UploadImage
           buttonLabel={"Upload Image"}
           handleImage={this.handleImageChange}
           imageUrl={this.state.images.imageUrl}
           error={this.state.error}
+        /> */}
+
+        <UploadImageTry
+          uploadImage={this.uploadImage}
+          buttonLabel={"Upload Image Try"}
         />
 
         <button
