@@ -65,6 +65,32 @@ class PostsList extends Component {
       });
   };
 
+  commentPost = (post, comment) => {
+    this.props.firebase.db
+      .runTransaction(transaction => {
+        // This code may get re-run multiple times if there are conflicts.
+        return transaction.get(this.props.firebase.post(post.uid)).then(doc => {
+          if (!doc.data().comments) {
+            transaction.set({
+              comments: [comment]
+            });
+          } else {
+            const comments = doc.data().comments;
+            comments.push(comment);
+            transaction.update(this.props.firebase.post(post.uid), {
+              comments: comments
+            });
+          }
+        });
+      })
+      .then(function() {
+        console.log("Transaction successfully committed!");
+      })
+      .catch(function(error) {
+        console.log("Transaction failed: ", error);
+      });
+  };
+
   deletePost = post => {
     this.props.firebase
       .post(post.uid)
@@ -114,6 +140,7 @@ class PostsList extends Component {
                     editPost={this.editPost}
                     incomingPosts={this.state.incomingPosts}
                     post={post}
+                    commentPost={this.commentPost}
                     key={post.uid}
                   />
                 ))}

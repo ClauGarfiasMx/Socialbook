@@ -26,6 +26,7 @@ const TextArea = styled.textarea`
 const INITIAL_STATE = {
   authorID: "",
   bookIt: 0,
+  comments: [],
   error: null,
   images: {},
   isPublic: false,

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import UploadImage from "./UploadImage";
+import CommentItem from "./CommentItem";
 import styled from "styled-components";
 
 const ImageFromPost = styled.img`
@@ -98,7 +99,14 @@ class PostItem extends Component {
   };
 
   render() {
-    const { authUser, bookIt, deletePost, incomingPosts, post } = this.props;
+    const {
+      authUser,
+      bookIt,
+      deletePost,
+      incomingPosts,
+      post,
+      commentPost
+    } = this.props;
     const { editMode, editText, images } = this.state;
     return (
       <React.Fragment>
@@ -182,7 +190,11 @@ class PostItem extends Component {
                   <button onClick={() => deletePost(post)}>Delete Post</button>
                 </div>
               )}
-
+              <CommentItem
+                authUser={authUser}
+                post={post}
+                commentPost={commentPost}
+              />
               <hr />
             </div>
           )
