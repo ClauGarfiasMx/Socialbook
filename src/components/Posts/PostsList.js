@@ -77,37 +77,6 @@ class PostsList extends Component {
       });
   };
 
-  // onLike(){
-  //   this.unsubscribe = this.props.firebase
-  //     .posts().add{
-
-  //     }
-
-  // }
-
-  /// CON MAP EN LUGAR DE FOREACH
-  // onListenForPosts = () => {
-  //   this.setState({ loading: true });
-
-  //   this.unsubscribe = this.props.firebase
-  //     .posts()
-  //     .orderBy("createdAt", "desc")
-  //     .limit(this.state.limit)
-  //     .onSnapshot(querySnapshot => {
-  //       if (querySnapshot.size) {
-  //         var post = [];
-  //         querySnapshot.docs.map(e => {
-  //           const postsincome = { postID: e.id, postData: e.data() };
-  //           post.push(postsincome);
-  //           return post;
-  //         });
-  //         this.setState({ posts: post, loading: false });
-  //       } else {
-  //         this.setState({ posts: null, loading: false });
-  //       }
-  //     });
-  // };
-
   componentDidMount() {
     this.onListenForPosts();
   }
@@ -127,7 +96,7 @@ class PostsList extends Component {
       <AuthUserContext.Consumer>
         {authUser => (
           <div>
-            <h2>Posts Recientes</h2>
+            <h2>Recent Posts</h2>
 
             {loading && (
               <div>
@@ -150,12 +119,12 @@ class PostsList extends Component {
                 ))}
 
                 <button type="button" onClick={this.onNextPage}>
-                  Más Posts
+                  More Post
                 </button>
               </div>
             )}
 
-            {!incomingPosts && <div>No hay posts! aún...</div>}
+            {!incomingPosts && <div>Sorry, there are no posts... yet.</div>}
           </div>
         )}
       </AuthUserContext.Consumer>

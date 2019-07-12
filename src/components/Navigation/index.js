@@ -23,11 +23,11 @@ const NavigationAuth = ({ authUser }) => (
       <Link to={ROUTES.HOME}>Home</Link>
     </li>
     <li>
-      <Link to={ROUTES.ACCOUNT}>Mi Cuenta</Link>
+      <Link to={ROUTES.ACCOUNT}>Account</Link>
     </li>
     {!!authUser.roles[ROLES.ADMIN] && (
       <li>
-        <Link to={ROUTES.ADMIN}>Admin</Link>
+        <Link to={ROUTES.ADMIN}>Admin Page</Link>
       </li>
     )}
     {/* <li>
@@ -42,13 +42,13 @@ const NavigationAuth = ({ authUser }) => (
 const NavigationNonAuth = () => (
   <ul>
     <li>
-      <Link to={ROUTES.LANDING}>Bienvenidx</Link>
+      <Link to={ROUTES.LANDING}>Welcome</Link>
     </li>
     <li>
-      <Link to={ROUTES.SIGN_IN}>Iniciar Sesión</Link>
+      <Link to={ROUTES.SIGN_IN}>Sign In</Link>
     </li>
     <li>
-      <Link to={ROUTES.SIGN_UP}>Crear Cuenta</Link>
+      <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
     </li>
   </ul>
 );

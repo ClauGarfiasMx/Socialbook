@@ -14,10 +14,10 @@ const ErrorParagraph = styled.p`
 
 const SignInPage = () => (
   <div>
-    <h1>Iniciar Sesión</h1>
+    <h2>Sign In</h2>
     <SignInForm />
     <p>
-      Quiero <SignUpLink />
+      I would like to <SignUpLink />
     </p>
     <p>
       <PasswordForgetLink />
@@ -62,19 +62,19 @@ class SignInFormBase extends Component {
     let message = "";
     switch (errorCode) {
       case "auth/invalid-email":
-        message = "Correo Electrónico inválido";
+        message = "Invalid Email";
         break;
       case "auth/user-not-found":
-        message = "Correo Electrónico no registrado";
+        message = "User not found";
         break;
       case "auth/wrong-password":
-        message = "Contraseña incorrecta";
+        message = "Wrong Pasword";
         break;
       case "auth/email-already-in-use":
-        message = "Este Correo Electrónico ya está en uso";
+        message = "Email already in use";
         break;
       case "auth/weak-password":
-        message = "La contraseña debe tener al menos 6 caracteres";
+        message = "Password must have at least 6 characters";
         break;
       default:
     }
@@ -89,7 +89,7 @@ class SignInFormBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <label>Email Registrado</label>
+        <label>Email: </label>
         <input
           name="email"
           value={email}
@@ -97,7 +97,7 @@ class SignInFormBase extends Component {
           type="text"
           placeholder="Email"
         />
-        <label>Constraseña</label>
+        <label> Password: </label>
         <input
           name="password"
           value={password}
@@ -106,7 +106,7 @@ class SignInFormBase extends Component {
           placeholder="Contraseña"
         />
         <button disabled={isInvalid} type="submit">
-          Iniciar Sesión
+          Log In
         </button>
 
         {error && (
@@ -119,7 +119,7 @@ class SignInFormBase extends Component {
 
 const SignInLink = () => (
   <React.Fragment>
-    <Link to={ROUTES.SIGN_IN}> Iniciar Sesión </Link>
+    <Link to={ROUTES.SIGN_IN}> Log In </Link>
   </React.Fragment>
 );
 

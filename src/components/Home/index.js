@@ -5,13 +5,9 @@ import { withAuthorization, withEmailVerification } from "../Session";
 // import Messages from "../Messages";
 
 const HomePage = () => (
-  <div>
-    <h1> Home </h1>
-    <p>La página Home está visible para todos los usuarios logueados</p>
-    <p>Currently using React {React.version}</p>
+  <main>
     <Posts />
-    {/* <Messages /> */}
-  </div>
+  </main>
 );
 
 const condition = authUser => !!authUser;

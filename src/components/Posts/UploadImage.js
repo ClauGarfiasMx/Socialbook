@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const UploadBtnWrapper = styled.div`
   position: relative;
@@ -8,12 +8,20 @@ const UploadBtnWrapper = styled.div`
 `;
 
 const UploadBtn = styled.button`
-  border: 1px solid gray;
-  color: gray;
   background-color: white;
-  padding: 0.5rem 1.25rem;
+  border: 1px solid gray;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 14px;
+  color: gray;
+  margin: 0.25rem 0.5rem 0.25rem 0;
+  padding: 0.25rem 1.25rem;
+  ${props =>
+    props.delete &&
+    css`
+      background: gray;
+      border: none !important;
+      color: white;
+    `}
 `;
 
 const ImagePreview = styled.img`
@@ -29,26 +37,31 @@ const HiddenInput = styled.input`
   left: 0;
   top: 0;
   opacity: 0;
+  margin: 0;
 `;
+
+const FlexDiv = styled.div`
+  display: flex;
+`;
+
 const UploadImage = props => {
   return (
     <div>
-      <UploadBtnWrapper>
-        <UploadBtn
-        // type={"button"}
-        // onClick={() => {
-        //   document.getElementById("uploadFile").click();
-        // }}
-        >
-          {props.buttonLabel}
-        </UploadBtn>
-        <HiddenInput
-          // id={"uploadFile"}
-          type="file"
-          accept="image/*"
-          onChange={props.handleImage}
-        />
-      </UploadBtnWrapper>
+      <FlexDiv>
+        <UploadBtnWrapper>
+          <UploadBtn>{props.buttonLabel}</UploadBtn>
+          <HiddenInput
+            type="file"
+            accept="image/*"
+            onChange={props.handleImage}
+          />
+        </UploadBtnWrapper>
+        {props.editMode && (
+          <UploadBtn delete onClick={props.deleteImage}>
+            Delete Image
+          </UploadBtn>
+        )}
+      </FlexDiv>
       <div>
         <ImagePreview src={props.imageUrl} />
       </div>
@@ -59,31 +72,4 @@ const UploadImage = props => {
   );
 };
 
-// const UploadImageEdited = props => {
-//   return (
-//     <div>
-//       <form>
-//         <button
-//           type={"button"}
-//           onClick={() => {
-//             document.getElementById("uploadFileEdited").click();
-//           }}
-//         >
-//           {props.buttonLabel}
-//         </button>
-//         <HiddenInput
-//           id={"uploadFileEdited"}
-//           type="file"
-//           accept="image/*"
-//           onChange={props.handleImageEdit}
-//         />
-//       </form>
-//       <ImagePreview src={props.imageUrl} />
-//       <div>
-//         <ErrorParagraph>{props.error}</ErrorParagraph>
-//       </div>
-//     </div>
-//   );
-// };
-
-export { UploadImage /*UploadImageEdited*/ };
+export default UploadImage;

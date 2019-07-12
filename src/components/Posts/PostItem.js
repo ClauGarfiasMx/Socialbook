@@ -1,9 +1,23 @@
 import React, { Component } from "react";
-import { UploadImage } from "./UploadImage";
+import UploadImage from "./UploadImage";
 import styled from "styled-components";
 
 const ImageFromPost = styled.img`
   max-width: 15rem;
+`;
+const TextArea = styled.textarea`
+  background-color: #fff !important;
+  border: 1px solid #b6b6b6;
+  -moz-border-radius: 1px solid #b6b6b6
+  -webkit-border-radius:1px solid #b6b6b6
+  border-radius: 5px;
+  font-family: Open Sans, Arial, sans-serif;
+  font-size: 15px;
+  color: #404b56 !important;
+  padding: 16px !important;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 `;
 
 class PostItem extends Component {
@@ -18,6 +32,7 @@ class PostItem extends Component {
     this.handleImageEdit = this.handleImageEdit.bind(this);
     this.editPost = this.editPost.bind(this);
     this.cancelEdit = this.cancelEdit.bind(this);
+    this.deleteImage = this.deleteImage.bind(this);
   }
   editPost() {
     this.setState({ editMode: true });
@@ -47,17 +62,16 @@ class PostItem extends Component {
       const size = file.size < 1048487;
       if (!isImage) {
         this.setState({
-          error: "No es un archivo de imagen",
+          error: "Sorry, the file is not an image",
           images: { imageUrl: "" }
         });
       } else if (!size) {
         this.setState({
-          error: "Archivo demasiado grande",
+          error: "Sorry, the file is too big",
           images: { imageUrl: "" }
         });
       } else {
         this.setState({ error: null });
-        // console.log(file);
         reader.onloadend = () => {
           this.setState({
             error: null,
@@ -67,6 +81,10 @@ class PostItem extends Component {
         reader.readAsDataURL(file);
       }
     }
+  }
+
+  deleteImage() {
+    this.setState({ images: {} });
   }
 
   saveEdit = () => {
@@ -79,9 +97,6 @@ class PostItem extends Component {
     this.setState({ editMode: false });
   };
 
-  // componentDidUpdate() {
-  // }
-
   render() {
     const { authUser, bookIt, deletePost, incomingPosts, post } = this.props;
     const { editMode, editText, images } = this.state;
@@ -89,21 +104,25 @@ class PostItem extends Component {
       <React.Fragment>
         {editMode ? (
           <div>
-            <textarea
+            <TextArea
               type="text"
               value={editText}
               onChange={this.onChangeEditText}
+              cols={"40"}
+              rows={"6"}
+              aria-required={true}
+              aria-invalid={false}
             />
             {post.images.imageUrl && (
               <div>
                 <UploadImage
                   handleImage={this.handleImageEdit}
-                  buttonLabel={"Actualizar Imagen"}
+                  buttonLabel={"Change Image"}
+                  editMode={this.state.editMode}
                   error={this.state.error}
+                  deleteImage={this.deleteImage}
                   imageUrl={images.imageUrl}
                 />
-
-                <button>Eliminar Imagen</button>
               </div>
             )}
 
@@ -113,58 +132,42 @@ class PostItem extends Component {
                 this.saveEdit();
               }}
             >
-              Actualizar Post
+              Update
             </button>
-            <button onClick={this.cancelEdit}>Cancelar</button>
+            <button onClick={this.cancelEdit}>Cancel</button>
             <hr />
           </div>
         ) : (
           incomingPosts && (
             <div>
               <p>
-                <strong>ID del post:</strong> {post.uid}
-              </p>
-              <p>
-                <strong>ID del autor:</strong> {post.authorID}
-              </p>
-              <p>
-                <strong>{post.username}</strong> publicó el{" "}
-                {post.createdAt
-                  .toDate()
-                  .toLocaleString()
-                  .slice(0, 9)}
-                a las
-                {post.createdAt
-                  .toDate()
-                  .toLocaleString()
-                  .slice(-9, -1)}{" "}
-                hrs.
+                <strong>{post.username}</strong> shared on{" "}
+                <i>
+                  {post.createdAt
+                    .toDate()
+                    .toString()
+                    .slice(0, 10)}{" "}
+                </i>
+                at
+                <i>
+                  {post.createdAt
+                    .toDate()
+                    .toLocaleString()
+                    .slice(-9, -1)}
+                </i>
+                :
               </p>
               <p>
                 <i>{post.text} </i>
               </p>
               <ImageFromPost src={post.images.imageUrl} />
               <p />
-              {post.editedAt && (
-                <i>
-                  Editado el{" "}
-                  {post.editedAt
-                    .toDate()
-                    .toLocaleString()
-                    .slice(0, 9)}{" "}
-                  a las
-                  {post.editedAt
-                    .toDate()
-                    .toLocaleString()
-                    .slice(-9, -1)}{" "}
-                  hrs.
-                </i>
-              )}
+              {post.editedAt && <i>(Edited)</i>}
               <p>
                 <span role="img" aria-label="Books">
                   📚
                 </span>{" "}
-                Books: {post.bookIt}
+                Bookits: {post.bookIt}
               </p>
               <button onClick={() => bookIt(post)}>
                 I{" "}
@@ -175,8 +178,8 @@ class PostItem extends Component {
               </button>
               {authUser.uid === post.authorID && (
                 <div>
-                  <button onClick={this.editPost}>Editar Post</button>
-                  <button onClick={() => deletePost(post)}>Borrar Post</button>
+                  <button onClick={this.editPost}>Edit Post</button>
+                  <button onClick={() => deletePost(post)}>Delete Post</button>
                 </div>
               )}
 

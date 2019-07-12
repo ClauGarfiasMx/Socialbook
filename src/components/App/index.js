@@ -15,25 +15,17 @@ import { withAuthentication } from "../Session";
 // import { withFirebase } from '../Firebase';
 // import { AuthUserContext } from '../Session';
 
-import styled from "styled-components";
 import Posts from "../Posts";
-// import { UserItem } from "../Users";
-
-const H1 = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: palevioletred;
-`;
 
 const App = () => {
   return (
     <div>
-      <H1>App</H1>
       <Router>
         <div>
           {/* Navigation uses AuthContext to consume the authenticated user*/}
           <Navigation />
           <hr />
+          <h1>Socialbook: Read {"&"} Share</h1>
 
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
@@ -47,9 +39,9 @@ const App = () => {
           <Route exact path={ROUTES.ACCOUNT} component={AccountPage} />
           <Route exact path={ROUTES.ADMIN} component={AdminPage} />
           <Route exact path={ROUTES.POST} component={Posts} />
-          {/* <Route exact path={ROUTES.ADMIN_DETAILS} component={UserItem} /> */}
         </div>
       </Router>
+      <p>Currently using React {React.version}</p>
     </div>
   );
 };

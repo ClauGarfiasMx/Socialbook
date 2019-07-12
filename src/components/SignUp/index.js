@@ -37,7 +37,7 @@ const FormSignUp = styled.form`
 `;
 const SignUpPage = () => (
   <div>
-    <h1> Registrar Nuevo Usuario </h1>
+    <h2>Sign Up </h2>
     <SignUpForm />
   </div>
 );
@@ -124,13 +124,13 @@ class SignUpFormBase extends Component {
     return (
       <FormSignUp vertical onSubmit={this.onSubmit} className="sign-up-form">
         {/* INPUTS get value from local state & updates it with a onChange handler */}
-        <label>Nombre Completo</label>
+        <label>User Name</label>
         <input
           name="username"
           value={username}
           onChange={this.onChange}
           type="text"
-          placeholder="Nombre Completo"
+          placeholder="User Name"
         />
         <label>Email</label>
         <input
@@ -140,15 +140,15 @@ class SignUpFormBase extends Component {
           type="text"
           placeholder="Email"
         />
-        <label>Contraseña</label>
+        <label>Password</label>
         <input
           name="passwordOne"
           value={passwordOne}
           onChange={this.onChange}
           type="password"
-          placeholder="Contraseña"
+          placeholder="Password"
         />
-        <label>Confirmar Contraseña</label>
+        <label>Confirm Password</label>
         <input
           name="passwordTwo"
           value={passwordTwo}
@@ -157,7 +157,7 @@ class SignUpFormBase extends Component {
           placeholder="Confirmar Contraseña"
         />
         <label>
-          Admin:
+          I am an administrator user:
           <input
             name="isAdmin"
             type="checkbox"
@@ -176,7 +176,7 @@ class SignUpFormBase extends Component {
 
 const SignUpLink = () => (
   <React.Fragment>
-    <Link to={ROUTES.SIGN_UP}> Crear una Cuenta </Link>
+    <Link to={ROUTES.SIGN_UP}> Sign Up </Link>
   </React.Fragment>
 );
 

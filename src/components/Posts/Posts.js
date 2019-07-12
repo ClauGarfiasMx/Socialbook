@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { UploadImage } from "./UploadImage";
+import UploadImage from "./UploadImage";
 import { withFirebase } from "../Firebase";
 import PostsList from "./PostsList";
 // import TextArea from "./TextArea";
@@ -10,7 +10,7 @@ import styled from "styled-components";
 const TextArea = styled.textarea`
   background-color: #fff !important;
   border: 1px solid #b6b6b6;
-  width: 30% !important;
+  width: 50% !important;
   -moz-border-radius: 1px solid #b6b6b6
   -webkit-border-radius:1px solid #b6b6b6
   border-radius: 5px;
@@ -68,17 +68,16 @@ class PostsBase extends Component {
       const size = file.size < 1048487;
       if (!isImage) {
         this.setState({
-          error: "No es un archivo de imagen",
+          error: "Sorry, the file is not an image",
           images: { imageUrl: "" }
         });
       } else if (!size) {
         this.setState({
-          error: "Archivo demasiado grande",
+          error: "Sorry, the file is too big",
           images: { imageUrl: "" }
         });
       } else {
         this.setState({ error: null });
-        // console.log(file);
         reader.onloadend = () => {
           this.setState({
             error: null,
@@ -115,22 +114,20 @@ class PostsBase extends Component {
     return (
       <div>
         <h2>
-          Hola
-          <label> {this.props.firebase.activeUser.username}</label>
+          Hello
+          <label> {this.props.firebase.activeUser.username}!</label>
         </h2>
-        <h3>Comparte tu último descubrimiento:</h3>
+        <h3>What are you reading?</h3>
         <TextArea
           type="text"
           onChange={this.onChangeText}
           value={this.state.text}
-          cols={"40"}
           rows={"10"}
           aria-required={true}
           aria-invalid={false}
         />
         <div>
           <label>
-            Post privado (visible sólo en mi club):
             <input
               name="isPublic"
               type="checkbox"
@@ -138,10 +135,11 @@ class PostsBase extends Component {
               value={false}
               onChange={this.onChangeCheckbox}
             />
+            Private (visible only in my club):
           </label>
         </div>
         <UploadImage
-          buttonLabel={"Subir Imagen"}
+          buttonLabel={"Upload Image"}
           handleImage={this.handleImageChange}
           imageUrl={this.state.images.imageUrl}
           error={this.state.error}
@@ -154,14 +152,14 @@ class PostsBase extends Component {
             this.createPost();
           }}
         >
-          Publicar
+          Share
         </button>
         <button
           onClick={() => {
             this.setState({ ...INITIAL_STATE });
           }}
         >
-          Cancelar
+          Cancel
         </button>
         <PostsList />
       </div>
