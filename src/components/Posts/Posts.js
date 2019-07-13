@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import UploadImage from "./UploadImage";
-import UploadImageTry from "./UploadImageTry";
 import { withFirebase } from "../Firebase";
 import PostsList from "./PostsList";
 // import TextArea from "./TextArea";
@@ -29,7 +28,10 @@ const INITIAL_STATE = {
   bookIt: 0,
   comments: [],
   error: null,
-  // images: {},
+  images: {
+    imageName: "",
+    imageUrl: ""
+  },
   isPublic: false,
   text: ""
 };
@@ -49,7 +51,6 @@ class PostsBase extends Component {
       text: event.target.value,
       authorID: this.props.firebase.activeUser.uid
     });
-    // console.log(this.state.text);
   };
   onChangeCheckbox = event => {
     this.setState({ isPublic: event.target.checked });
@@ -145,16 +146,11 @@ class PostsBase extends Component {
             Private (visible only in my club):
           </label>
         </div>
-        {/* <UploadImage
-          buttonLabel={"Upload Image"}
-          handleImage={this.handleImageChange}
-          imageUrl={this.state.images.imageUrl}
-          error={this.state.error}
-        /> */}
 
-        <UploadImageTry
+        <UploadImage
           uploadImage={this.uploadImage}
-          buttonLabel={"Upload Image Try"}
+          buttonLabel={"Upload Image"}
+          imageUrl={this.state.images.imageUrl}
         />
 
         <button

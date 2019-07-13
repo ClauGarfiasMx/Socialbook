@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import UploadImage from "./UploadImage";
-import UploadImageTry from "./UploadImageTry";
 import CommentItem from "./CommentItem";
 import styled from "styled-components";
 
@@ -29,13 +28,13 @@ class PostItem extends Component {
       editMode: false,
       editText: this.props.post.text,
       error: null,
-      images: {}
+      images: this.props.post.images
     };
-    this.handleImageEdit = this.handleImageEdit.bind(this);
-    this.uploadNewImage = this.uploadNewImage.bind(this);
+    // this.handleImageEdit = this.handleImageEdit.bind(this);
+    this.uploadImage = this.uploadImage.bind(this);
     this.editPost = this.editPost.bind(this);
     this.cancelEdit = this.cancelEdit.bind(this);
-    this.deleteImage = this.deleteImage.bind(this);
+    // this.deleteImage = this.deleteImage.bind(this);
   }
   editPost() {
     this.setState({ editMode: true });
@@ -50,49 +49,13 @@ class PostItem extends Component {
     this.setState({ editText: event.target.value });
   };
 
-  handleImageEdit(e) {
-    e.preventDefault();
-    const fileTypes = ["jpg", "jpeg", "png", "gif"];
-    const reader = new FileReader();
-    let file = e.target.files[0];
-    if (file) {
-      let extension = file.name
-        .split(".")
-        .pop()
-        .toLowerCase();
-      const isImage = fileTypes.indexOf(extension) > -1;
-
-      const size = file.size < 1048487;
-      if (!isImage) {
-        this.setState({
-          error: "Sorry, the file is not an image",
-          images: { imageUrl: "" }
-        });
-      } else if (!size) {
-        this.setState({
-          error: "Sorry, the file is too big",
-          images: { imageUrl: "" }
-        });
-      } else {
-        this.setState({ error: null });
-        reader.onloadend = () => {
-          this.setState({
-            error: null,
-            images: { imageName: file.name, imageUrl: reader.result }
-          });
-        };
-        reader.readAsDataURL(file);
-      }
-    }
-  }
-
-  uploadNewImage(images) {
+  uploadImage(images) {
     this.setState({ images: images });
   }
 
-  deleteImage() {
-    this.setState({ images: {} });
-  }
+  // deleteImage() {
+  //   this.setState({ images: {} });
+  // }
 
   saveEdit = () => {
     this.props.editPost(
@@ -113,7 +76,7 @@ class PostItem extends Component {
       post,
       commentPost
     } = this.props;
-    const { editMode, editText, images } = this.state;
+    const { editMode, editText } = this.state;
     return (
       <React.Fragment>
         {editMode ? (
@@ -128,23 +91,27 @@ class PostItem extends Component {
               aria-invalid={false}
             />
             {post.images.imageUrl && (
-              <div>
-                {/* <UploadImage
-                  handleImage={this.handleImageEdit}
+              <React.Fragment>
+                <UploadImage
+                  uploadImage={this.uploadImage}
                   buttonLabel={"Change Image"}
                   editMode={this.state.editMode}
-                  error={this.state.error}
                   deleteImage={this.deleteImage}
-                  imageUrl={images.imageUrl}
-                /> */}
+                  imageUrl={this.state.images.imageUrl}
+                />
+              </React.Fragment>
+            )}
 
-                <UploadImageTry
-                  uploadImage={this.uploadNewImage}
-                  buttonLabel={"Change Image Try"}
+            {!post.images.imageUrl && (
+              <React.Fragment>
+                <UploadImage
+                  uploadImage={this.uploadImage}
+                  buttonLabel={"Upload Image"}
                   editMode={this.state.editMode}
                   deleteImage={this.deleteImage}
+                  imageUrl={this.state.images.imageUrl}
                 />
-              </div>
+              </React.Fragment>
             )}
 
             <button
