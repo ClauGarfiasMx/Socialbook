@@ -12,17 +12,17 @@ const AccountPage = () => (
   <AuthUserContext.Consumer>
     {authUser => (
       <div>
-        <h1> Mi Cuenta </h1>
-        <h2>Hola: {authUser.username}!</h2>
+        <h2>Account belongs to {authUser.username}.</h2>
+        <img src={authUser.profilePic.imageUrl} alt="Profile" />
         <p>
-          <strong>ID USUARIO:</strong> {authUser.uid}
+          <strong>USER ID:</strong> {authUser.uid}
         </p>
         <div>
-          <h3>Olvidé mi contraseña:</h3>
+          <h3>I forgot my Password:</h3>
           <PasswordForgetForm />
         </div>
         <div>
-          <h3>Quiero cambiar mi contraseña:</h3>
+          <h3>I want to reset my Password:</h3>
           <PasswordChangeForm />
         </div>
         {/* {console.log(authUser)} */}

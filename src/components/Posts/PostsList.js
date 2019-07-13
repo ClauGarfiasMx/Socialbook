@@ -146,7 +146,7 @@ class PostsList extends Component {
                 ))}
 
                 <button type="button" onClick={this.onNextPage}>
-                  More Post
+                  More Posts
                 </button>
               </div>
             )}

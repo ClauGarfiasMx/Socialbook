@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { compose } from "recompose";
 import { withFirebase } from "../Firebase";
-// import { FirebaseContext } from '../Firebase';
 import * as ROUTES from "../../constants/routes";
 import * as ROLES from "../../constants/roles";
+import UploadImage from "../Utils/UploadImage";
 import styled from "styled-components";
 
 const FormSignUp = styled.form`
@@ -46,10 +46,15 @@ const SignUpPage = () => (
 const INITIAL_STATE = {
   username: "",
   email: "",
+  error: null,
+  isAdmin: false,
   passwordOne: "",
   passwordTwo: "",
-  isAdmin: false,
-  error: null
+  profilePic: {
+    imageName: "",
+    imageUrl:
+      "https://claudiagarfias.works/laboratoria/visitors/assets/kisspng-computer-icons.png"
+  }
 };
 
 // SignUpForm Manages the FORM STATE in React's local state
@@ -57,10 +62,11 @@ class SignUpFormBase extends Component {
   constructor(props) {
     super(props);
     this.state = { ...INITIAL_STATE }; // ... is SPREAD OPERATOR, here is like a PUSH METHOD
+    this.uploadProfilePic = this.uploadProfilePic.bind(this);
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne, isAdmin } = this.state;
+    const { username, email, passwordOne, isAdmin, profilePic } = this.state;
     const roles = {};
     if (isAdmin) {
       roles[ROLES.ADMIN] = ROLES.ADMIN;
@@ -73,6 +79,7 @@ class SignUpFormBase extends Component {
           {
             username,
             email,
+            profilePic,
             roles
           },
           { merge: true }
@@ -105,6 +112,10 @@ class SignUpFormBase extends Component {
     this.setState({ [event.target.name]: event.target.checked });
   };
 
+  uploadProfilePic(img) {
+    this.setState({ profilePic: img });
+  }
+
   render() {
     const {
       username,
@@ -124,6 +135,12 @@ class SignUpFormBase extends Component {
     return (
       <FormSignUp vertical onSubmit={this.onSubmit} className="sign-up-form">
         {/* INPUTS get value from local state & updates it with a onChange handler */}
+        <label>Profile Picture</label>
+        <UploadImage
+          uploadImage={this.uploadProfilePic}
+          buttonLabel={"Upload Image"}
+          imageUrl={this.state.profilePic.imageUrl}
+        />
         <label>User Name</label>
         <input
           name="username"

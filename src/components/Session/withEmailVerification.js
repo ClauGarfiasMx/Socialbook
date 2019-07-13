@@ -35,14 +35,15 @@ const withEmailverification = Component => {
               <div>
                 {this.state.isSent ? (
                   <p>
-                    Se ha enviado un email de confirmación: revisa tus correos
-                    incluyendo el Spam. Refresca esta página una vez que hayas
-                    confirmado.
+                    E-Mail confirmation sent: Check you E-Mails (Spam folder
+                    included) for a confirmation E-Mail. Refresh this page once
+                    you confirmed your E-Mail.
                   </p>
                 ) : (
                   <p>
-                    Se ha enviado un email de confirmación: revisa tus correos
-                    incluyendo el Spam. Puedes reenviarlo si no lo has recibido.
+                    Verify your E-Mail: Check you E-Mails (Spam folder included)
+                    for a confirmation E-Mail or send another confirmation
+                    E-Mail.
                   </p>
                 )}
 
@@ -51,7 +52,7 @@ const withEmailverification = Component => {
                   onClick={this.onSendEmailVerification}
                   disabled={this.state.isSent}
                 >
-                  Enviar email de confirmación
+                  Send confirmation E-Mail
                 </button>
               </div>
             ) : (

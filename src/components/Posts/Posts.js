@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import UploadImage from "./UploadImage";
 import { withFirebase } from "../Firebase";
 import PostsList from "./PostsList";
-// import TextArea from "./TextArea";
-// import { AuthUserContext } from "../Session";
+import { AuthUserContext } from "../Session";
 import styled from "styled-components";
-//
 
 const TextArea = styled.textarea`
   background-color: #fff !important;
@@ -41,15 +39,13 @@ class PostsBase extends Component {
     this.state = {
       ...INITIAL_STATE
     };
-    this.handleImageChange = this.handleImageChange.bind(this);
     this.createPost = this.createPost.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
   }
 
   onChangeText = event => {
     this.setState({
-      text: event.target.value,
-      authorID: this.props.firebase.activeUser.uid
+      text: event.target.value
     });
   };
   onChangeCheckbox = event => {
@@ -57,51 +53,15 @@ class PostsBase extends Component {
     console.log("Public: " + this.state.isPublic);
   };
 
-  handleImageChange(e) {
-    e.preventDefault();
-    const fileTypes = ["jpg", "jpeg", "png", "gif"];
-    const reader = new FileReader();
-    let file = e.target.files[0];
-    if (file) {
-      let extension = file.name
-        .split(".")
-        .pop()
-        .toLowerCase();
-      const isImage = fileTypes.indexOf(extension) > -1;
-
-      const size = file.size < 1048487;
-      if (!isImage) {
-        this.setState({
-          error: "Sorry, the file is not an image",
-          images: { imageUrl: "" }
-        });
-      } else if (!size) {
-        this.setState({
-          error: "Sorry, the file is too big",
-          images: { imageUrl: "" }
-        });
-      } else {
-        this.setState({ error: null });
-        reader.onloadend = () => {
-          this.setState({
-            error: null,
-            images: { imageName: file.name, imageUrl: reader.result }
-          });
-        };
-        reader.readAsDataURL(file);
-      }
-    }
-  }
-
   uploadImage(images) {
     this.setState({ images: images });
   }
 
-  createPost() {
+  createPost(postAuthor) {
     this.props.firebase
       .posts()
       .add({
-        username: this.props.firebase.activeUser.username,
+        username: postAuthor,
         createdAt: new Date(),
         ...this.state
       })
@@ -121,10 +81,14 @@ class PostsBase extends Component {
 
     return (
       <div>
-        <h2>
-          Hello
-          <label> {this.props.firebase.activeUser.username}!</label>
-        </h2>
+        <AuthUserContext.Consumer>
+          {auhtUser => (
+            <h2>
+              Hello
+              <label> {auhtUser.username}!</label>
+            </h2>
+          )}
+        </AuthUserContext.Consumer>
         <h3>What are you reading?</h3>
         <TextArea
           type="text"
@@ -152,23 +116,28 @@ class PostsBase extends Component {
           buttonLabel={"Upload Image"}
           imageUrl={this.state.images.imageUrl}
         />
-
-        <button
-          disabled={isInvalid}
-          type="submit"
-          onClick={() => {
-            this.createPost();
-          }}
-        >
-          Share
-        </button>
-        <button
-          onClick={() => {
-            this.setState({ ...INITIAL_STATE });
-          }}
-        >
-          Cancel
-        </button>
+        <AuthUserContext.Consumer>
+          {authUser => (
+            <React.Fragment>
+              <button
+                disabled={isInvalid}
+                type="submit"
+                onClick={() => {
+                  this.createPost(authUser.username);
+                }}
+              >
+                Share
+              </button>
+              <button
+                onClick={() => {
+                  this.setState({ ...INITIAL_STATE });
+                }}
+              >
+                Cancel
+              </button>
+            </React.Fragment>
+          )}
+        </AuthUserContext.Consumer>
         <PostsList />
       </div>
     );

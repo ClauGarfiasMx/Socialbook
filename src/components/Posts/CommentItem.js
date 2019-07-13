@@ -43,30 +43,3 @@ class CommentItem extends Component {
 }
 
 export default CommentItem;
-
-// class CommentItem extends Component {
-//   state = {
-//     authorOfCommentID: "",
-//     authorOfCommentName: "",
-//     text: ""
-//   };
-//   onChangeComment(/*authID, authName,*/ event) {
-//     this.setState({
-//       /* authorOfCommentID: authID,
-//       authorOfCommentName: authName,*/
-//       text: event.target.value
-//     });
-//   }
-//   render() {
-//     const { authUser } = this.props;
-//     return (
-//       <article>
-//         What do you think?
-//         <input onChange={this.onChangeComment} value={this.state.text} />
-//         <button>Comment</button>
-//       </article>
-//     );
-//   }
-// }
-
-// export default CommentItem;
