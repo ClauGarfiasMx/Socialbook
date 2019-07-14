@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import UploadImage from "./UploadImage";
+import UploadImage from "../Utils/UploadImage";
 import { withFirebase } from "../Firebase";
 import PostsList from "./PostsList";
 import { AuthUserContext } from "../Session";
@@ -45,6 +45,7 @@ class PostsBase extends Component {
 
   onChangeText = event => {
     this.setState({
+      authorID: this.props.firebase.activeUser.uid,
       text: event.target.value
     });
   };

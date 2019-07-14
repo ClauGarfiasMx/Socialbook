@@ -173,7 +173,7 @@ class PostItem extends Component {
 
               {post.comments && (
                 <article>
-                  <p>Commments:</p>
+                  <p>Comments:</p>
                   <div>
                     {post.comments.map((comment, idx) => (
                       <div key={idx}>

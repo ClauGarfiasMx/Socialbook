@@ -60,6 +60,7 @@ export default class Textarea extends React.Component {
           }}
           onChange={this.setValue}
           onKeyUp={this.setFilledTextareaHeight}
+          wrap="hard"
         />
       </div>
     );
