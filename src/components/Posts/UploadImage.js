@@ -107,6 +107,12 @@ class UploadImage extends Component {
   render() {
     return (
       <div>
+        <div>
+          <ImagePreview src={this.props.imageUrl} />
+        </div>
+        <div>
+          <ErrorParagraph>{this.state.error}</ErrorParagraph>
+        </div>
         <FlexDiv>
           <UploadBtnWrapper>
             <UploadBtn>{this.props.buttonLabel}</UploadBtn>
@@ -122,12 +128,6 @@ class UploadImage extends Component {
             </UploadBtn>
           )}
         </FlexDiv>
-        <div>
-          <ImagePreview src={this.props.imageUrl} />
-        </div>
-        <div>
-          <ErrorParagraph>{this.state.error}</ErrorParagraph>
-        </div>
       </div>
     );
   }

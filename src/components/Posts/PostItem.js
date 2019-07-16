@@ -120,7 +120,7 @@ class PostItem extends Component {
                 this.saveEdit();
               }}
             >
-              Update
+              Update Post
             </button>
             <button onClick={this.cancelEdit}>Cancel</button>
             <hr />
@@ -143,14 +143,13 @@ class PostItem extends Component {
                     .toLocaleString()
                     .slice(-9, -1)}
                 </i>
-                :
+                {post.editedAt && <i> (Edited) </i>}:
               </p>
               <p>
                 <i>{post.text} </i>
               </p>
               <ImageFromPost src={post.images.imageUrl} />
               <p />
-              {post.editedAt && <i>(Edited)</i>}
               <p>
                 <span role="img" aria-label="Books">
                   📚

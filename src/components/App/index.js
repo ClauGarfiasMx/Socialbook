@@ -1,5 +1,6 @@
 import React from "react";
 import { HashRouter as Router, Route } from "react-router-dom";
+import styled, { css } from "styled-components";
 
 import Navigation from "../Navigation";
 import LandingPage from "../Landing";
@@ -9,14 +10,19 @@ import PasswordForgetPage from "../PasswordForget";
 import HomePage from "../Home";
 import AccountPage from "../Account";
 import AdminPage from "../Admin";
-
 import * as ROUTES from "../../constants/routes";
 import { withAuthentication } from "../Session";
-// import { withFirebase } from '../Firebase';
-// import { AuthUserContext } from '../Session';
-
 import Posts from "../Posts";
 
+const Footer = styled.footer`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5rem;
+  p {
+    font-size: 0.85rem;
+  }
+`;
 const App = () => {
   return (
     <div>
@@ -24,8 +30,8 @@ const App = () => {
         <div>
           {/* Navigation uses AuthContext to consume the authenticated user*/}
           <Navigation />
-          <hr />
-          <h1>Socialbook: Read {"&"} Share</h1>
+          <h1>Socialbook: </h1>
+          <h1>Read {"&"} Share</h1>
 
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
@@ -41,7 +47,9 @@ const App = () => {
           <Route exact path={ROUTES.POST} component={Posts} />
         </div>
       </Router>
-      <p>Currently using React {React.version}</p>
+      <Footer>
+        <p>Currently using React {React.version}</p>
+      </Footer>
     </div>
   );
 };

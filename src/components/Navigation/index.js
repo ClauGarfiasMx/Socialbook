@@ -1,10 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styled, { css } from "styled-components";
 
 import { AuthUserContext } from "../Session";
 import SignOutButton from "../SignOut";
 import * as ROUTES from "../../constants/routes";
 import * as ROLES from "../../constants/roles";
+
+const MainMenu = styled.nav`
+  display: flex;
+  justify-content: flex-end;
+  span {
+    margin: 0.5rem;
+  }
+`;
 
 const Navigation = () => (
   <AuthUserContext.Consumer>
@@ -15,42 +24,37 @@ const Navigation = () => (
 );
 
 const NavigationAuth = ({ authUser }) => (
-  <ul>
-    {/* <li>
-      <Link to={ROUTES.LANDING}>Landing</Link>
-    </li> */}
-    <li>
+  <MainMenu>
+    <span>
       <Link to={ROUTES.HOME}>Home</Link>
-    </li>
-    <li>
+    </span>
+    <span>
       <Link to={ROUTES.ACCOUNT}>Account</Link>
-    </li>
+    </span>
     {!!authUser.roles[ROLES.ADMIN] && (
-      <li>
+      <span>
         <Link to={ROUTES.ADMIN}>Admin Page</Link>
-      </li>
+      </span>
     )}
-    {/* <li>
-      <Link to={ROUTES.POST}>Publicar</Link>
-    </li> */}
-    <li>
+
+    <span>
       <SignOutButton />
-    </li>
-  </ul>
+    </span>
+  </MainMenu>
 );
 
 const NavigationNonAuth = () => (
-  <ul>
-    <li>
+  <MainMenu>
+    <span>
       <Link to={ROUTES.LANDING}>Welcome</Link>
-    </li>
-    <li>
+    </span>
+    <span>
       <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-    </li>
-    <li>
+    </span>
+    <span>
       <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
-    </li>
-  </ul>
+    </span>
+  </MainMenu>
 );
 
 export default Navigation;

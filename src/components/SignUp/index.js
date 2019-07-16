@@ -10,6 +10,7 @@ import styled from "styled-components";
 const FormSignUp = styled.form`
   display: flex;
   max-width: 20rem;
+  margin: auto;
   padding: 0.5rem;
   ${props => props.vertical && "flex-direction: column;"} > * {
     flex: 1;
@@ -134,11 +135,9 @@ class SignUpFormBase extends Component {
 
     return (
       <FormSignUp vertical onSubmit={this.onSubmit} className="sign-up-form">
-        {/* INPUTS get value from local state & updates it with a onChange handler */}
-        <label>Profile Picture</label>
         <UploadImage
           uploadImage={this.uploadProfilePic}
-          buttonLabel={"Upload Image"}
+          buttonLabel={"Upload Profile Picture"}
           imageUrl={this.state.profilePic.imageUrl}
         />
         <label>User Name</label>

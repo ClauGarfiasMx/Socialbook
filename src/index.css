@@ -1,14 +1,15 @@
+@import url("https://fonts.googleapis.com/css?family=DM+Serif+Display&display=swap");
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "DM Serif Display", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 1rem;
+  text-align: center;
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
@@ -25,7 +26,7 @@ code {
   box-shadow: none;
   display: block;
   border: 2px solid black;
-  overflow: hidden; /* Removes scrollbar*/
+  overflow: hidden; 
   transition: height 0.2s ease;
 }
 
@@ -34,11 +35,10 @@ code {
   display: block;
   white-space: pre-wrap;
   word-wrap: break-word;
-  /* //  Uncomment below to hide the ghost div... */
   visibility: hidden;
   position: absolute;
   top: 0;
-}
+} */
 /* 
 .fileInput {
   border-bottom: 4px solid lightgray;
@@ -83,7 +83,7 @@ img {
   background: #efefef;
 } */
 
-.centerText {
+/* .centerText {
   text-align: center;
   width: 500px;
-}
+} */
