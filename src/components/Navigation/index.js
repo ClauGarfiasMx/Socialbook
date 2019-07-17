@@ -1,4 +1,5 @@
 import React from "react";
+import { SignInForm } from "../SignIn";
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
@@ -8,10 +9,23 @@ import * as ROUTES from "../../constants/routes";
 import * as ROLES from "../../constants/roles";
 
 const MainMenu = styled.nav`
+  align-items: center;
   display: flex;
-  justify-content: flex-end;
+  padding: 2rem 0;
+  justify-content: space-between;
+  max-width: 90%;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
   span {
     margin: 0.5rem;
+  }
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+  p {
+    margin-left: 10%;
   }
 `;
 
@@ -25,35 +39,41 @@ const Navigation = () => (
 
 const NavigationAuth = ({ authUser }) => (
   <MainMenu>
-    <span>
-      <Link to={ROUTES.HOME}>Home</Link>
-    </span>
-    <span>
-      <Link to={ROUTES.ACCOUNT}>Account</Link>
-    </span>
-    {!!authUser.roles[ROLES.ADMIN] && (
+    <p>Socialbook</p>
+    <div>
       <span>
-        <Link to={ROUTES.ADMIN}>Admin Page</Link>
+        <Link to={ROUTES.HOME}>Home</Link>
       </span>
-    )}
+      <span>
+        <Link to={ROUTES.ACCOUNT}>Account</Link>
+      </span>
+      {!!authUser.roles[ROLES.ADMIN] && (
+        <span>
+          <Link to={ROUTES.ADMIN}>Admin Page</Link>
+        </span>
+      )}
 
-    <span>
-      <SignOutButton />
-    </span>
+      <span>
+        <SignOutButton />
+      </span>
+    </div>
   </MainMenu>
 );
 
 const NavigationNonAuth = () => (
   <MainMenu>
-    <span>
-      <Link to={ROUTES.LANDING}>Welcome</Link>
-    </span>
-    <span>
-      <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-    </span>
-    <span>
-      <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
-    </span>
+    <p>Socialbook</p>
+    <div>
+      <span>
+        <Link to={ROUTES.LANDING}>Welcome</Link>
+      </span>
+      <span>
+        <Link to={"#signin-section"}>Sign In</Link>
+      </span>
+      <span>
+        <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+      </span>
+    </div>
   </MainMenu>
 );
 

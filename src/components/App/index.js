@@ -17,6 +17,7 @@ import Posts from "../Posts";
 const Footer = styled.footer`
   display: flex;
   align-items: center;
+  background-color: #ffaaaa;
   justify-content: center;
   height: 5rem;
   p {
@@ -27,11 +28,13 @@ const App = () => {
   return (
     <div>
       <Router>
-        <div>
+        <React.Fragment>
           {/* Navigation uses AuthContext to consume the authenticated user*/}
           <Navigation />
-          <h1>Socialbook: </h1>
-          <h1>Read {"&"} Share</h1>
+          {/* <MainTitle>
+            <h1>Socialbook</h1>{" "}
+          </MainTitle>
+          <h2>Read {"&"} Share</h2> */}
 
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
@@ -45,7 +48,7 @@ const App = () => {
           <Route exact path={ROUTES.ACCOUNT} component={AccountPage} />
           <Route exact path={ROUTES.ADMIN} component={AdminPage} />
           <Route exact path={ROUTES.POST} component={Posts} />
-        </div>
+        </React.Fragment>
       </Router>
       <Footer>
         <p>Currently using React {React.version}</p>

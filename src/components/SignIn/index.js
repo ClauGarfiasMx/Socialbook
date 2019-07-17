@@ -91,6 +91,7 @@ class SignInFormBase extends Component {
       <form onSubmit={this.onSubmit}>
         <label>Email: </label>
         <input
+          autoComplete="off"
           name="email"
           value={email}
           onChange={this.onChange}
@@ -103,15 +104,14 @@ class SignInFormBase extends Component {
           value={password}
           onChange={this.onChange}
           type="password"
-          placeholder="Contraseña"
+          placeholder="Password"
         />
-        <button disabled={isInvalid} type="submit">
-          Sign In
-        </button>
-
         {error && (
           <ErrorParagraph>{this.codeMessageMapper(error.code)}</ErrorParagraph>
         )}
+        <button disabled={isInvalid} type="submit">
+          Sign In
+        </button>
       </form>
     );
   }
