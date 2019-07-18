@@ -1,21 +1,24 @@
 {
   "files": {
-    "main.css": "/socialbook/static/css/main.701f3788.chunk.css",
-    "main.js": "/socialbook/static/js/main.2f10198f.chunk.js",
-    "main.js.map": "/socialbook/static/js/main.2f10198f.chunk.js.map",
+    "main.css": "/socialbook/static/css/main.23d73c06.chunk.css",
+    "main.js": "/socialbook/static/js/main.ac0f9f9c.chunk.js",
+    "main.js.map": "/socialbook/static/js/main.ac0f9f9c.chunk.js.map",
     "runtime~main.js": "/socialbook/static/js/runtime~main.650fe429.js",
     "runtime~main.js.map": "/socialbook/static/js/runtime~main.650fe429.js.map",
-    "static/css/2.d2845be8.chunk.css": "/socialbook/static/css/2.d2845be8.chunk.css",
-    "static/js/2.cb6da637.chunk.js": "/socialbook/static/js/2.cb6da637.chunk.js",
-    "static/js/2.cb6da637.chunk.js.map": "/socialbook/static/js/2.cb6da637.chunk.js.map",
+    "static/css/2.5ec480d0.chunk.css": "/socialbook/static/css/2.5ec480d0.chunk.css",
+    "static/js/2.5b38baf6.chunk.js": "/socialbook/static/js/2.5b38baf6.chunk.js",
+    "static/js/2.5b38baf6.chunk.js.map": "/socialbook/static/js/2.5b38baf6.chunk.js.map",
     "index.html": "/socialbook/index.html",
-    "precache-manifest.45f14845876b1b86204aa33f60f4a0a2.js": "/socialbook/precache-manifest.45f14845876b1b86204aa33f60f4a0a2.js",
+    "precache-manifest.9cb52a2f2000c25f33f6309b720ad62e.js": "/socialbook/precache-manifest.9cb52a2f2000c25f33f6309b720ad62e.js",
     "service-worker.js": "/socialbook/service-worker.js",
-    "static/css/2.d2845be8.chunk.css.map": "/socialbook/static/css/2.d2845be8.chunk.css.map",
-    "static/css/main.701f3788.chunk.css.map": "/socialbook/static/css/main.701f3788.chunk.css.map",
+    "static/css/2.5ec480d0.chunk.css.map": "/socialbook/static/css/2.5ec480d0.chunk.css.map",
+    "static/css/main.23d73c06.chunk.css.map": "/socialbook/static/css/main.23d73c06.chunk.css.map",
     "static/media/book.png": "/socialbook/static/media/book.74d14921.png",
     "static/media/bookcase-books-bookshelf.png": "/socialbook/static/media/bookcase-books-bookshelf.d980c75b.png",
     "static/media/chair-chat-conversation.jpg": "/socialbook/static/media/chair-chat-conversation.48eabd59.jpg",
-    "static/media/profilepicegg.jpg": "/socialbook/static/media/profilepicegg.f3fcf671.jpg"
+    "static/media/profilepicegg.jpg": "/socialbook/static/media/profilepicegg.dc985860.jpg",
+    "static/media/reading-sunset.jpg": "/socialbook/static/media/reading-sunset.0b5e79ef.jpg",
+    "static/media/reading.jpg": "/socialbook/static/media/reading.736f3daa.jpg",
+    "static/media/readingwoman.jpg": "/socialbook/static/media/readingwoman.edf9132d.jpg"
   }
 }
