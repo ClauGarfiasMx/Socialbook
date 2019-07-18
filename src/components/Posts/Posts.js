@@ -5,6 +5,9 @@ import PostsList from "./PostsList";
 import { AuthUserContext } from "../Session";
 import styled from "styled-components";
 
+const PostContainer = styled.div`
+  display: flex;
+`;
 const TextArea = styled.textarea`
   background-color: #fff !important;
   border: 1px solid #b6b6b6;
@@ -19,6 +22,9 @@ const TextArea = styled.textarea`
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+`;
+const CreatePostSection = styled.section`
+  width: 50%;
 `;
 
 const INITIAL_STATE = {
@@ -81,66 +87,71 @@ class PostsBase extends Component {
     const isInvalid = this.state.error != null || this.state.text === "";
 
     return (
-      <div>
+      <React.Fragment>
         <AuthUserContext.Consumer>
           {auhtUser => (
             <h2>
-              Hello
+              Greadings
               <label> {auhtUser.username}!</label>
             </h2>
           )}
         </AuthUserContext.Consumer>
-        <h3>What are you reading?</h3>
-        <TextArea
-          type="text"
-          onChange={this.onChangeText}
-          value={this.state.text}
-          rows={"10"}
-          aria-required={true}
-          aria-invalid={false}
-        />
-        <div>
-          <label>
-            <input
-              name="isPublic"
-              type="checkbox"
-              checked={this.state.isPublic}
-              value={false}
-              onChange={this.onChangeCheckbox}
-            />
-            Private (visible only in my club):
-          </label>
-        </div>
+        <PostContainer>
+          <PostsList />
 
-        <UploadImage
-          uploadImage={this.uploadImage}
-          buttonLabel={"Upload Image"}
-          imageUrl={this.state.images.imageUrl}
-        />
-        <AuthUserContext.Consumer>
-          {authUser => (
-            <React.Fragment>
-              <button
-                disabled={isInvalid}
-                type="submit"
-                onClick={() => {
-                  this.createPost(authUser.username);
-                }}
-              >
-                Share
-              </button>
-              <button
-                onClick={() => {
-                  this.setState({ ...INITIAL_STATE });
-                }}
-              >
-                Cancel
-              </button>
-            </React.Fragment>
-          )}
-        </AuthUserContext.Consumer>
-        <PostsList />
-      </div>
+          <CreatePostSection>
+            <h3>What are you reading?</h3>
+            <TextArea
+              type="text"
+              onChange={this.onChangeText}
+              value={this.state.text}
+              rows={"10"}
+              aria-required={true}
+              aria-invalid={false}
+            />
+
+            <UploadImage
+              uploadImage={this.uploadImage}
+              buttonLabel={"Upload Image"}
+              imageUrl={this.state.images.imageUrl}
+            />
+            <div>
+              <label>
+                <input
+                  name="isPublic"
+                  type="checkbox"
+                  checked={this.state.isPublic}
+                  value={false}
+                  onChange={this.onChangeCheckbox}
+                />
+                Private (visible only in my club):
+              </label>
+            </div>
+            <AuthUserContext.Consumer>
+              {authUser => (
+                <React.Fragment>
+                  <button
+                    disabled={isInvalid}
+                    type="submit"
+                    onClick={() => {
+                      this.createPost(authUser.username);
+                    }}
+                  >
+                    Share
+                  </button>
+                  <button
+                    onClick={() => {
+                      this.setState({ ...INITIAL_STATE });
+                    }}
+                  >
+                    Cancel
+                  </button>
+                </React.Fragment>
+              )}
+            </AuthUserContext.Consumer>
+          </CreatePostSection>
+        </PostContainer>
+      </React.Fragment>
     );
   }
 }

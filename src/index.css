@@ -8,6 +8,33 @@ body {
   margin: 0;
   /* padding: 1rem; */
   text-align: center;
+  color: #283033;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 100;
+}
+
+.gradient-backg {
+  background-image: linear-gradient(
+    to bottom,
+    #86c6e7,
+    #7cbee1,
+    #72b7da,
+    #68afd4,
+    #5ea8ce,
+    #57a1c8,
+    #4f9ac2,
+    #4893bc,
+    #428bb4,
+    #3c83ac,
+    #377ba5,
+    #31739d
+  );
 }
 
 /* code {

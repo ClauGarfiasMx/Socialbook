@@ -5,15 +5,15 @@ const UploadBtnWrapper = styled.div`
   position: relative;
   overflow: hidden;
   display: inline-block;
+  margin: 0 auto;
 `;
 
 const UploadBtn = styled.button`
   background-color: white;
   border: 1px solid gray;
-  border-radius: 5px;
   font-size: 14px;
   color: gray;
-  margin: 0.25rem 0.5rem 0.25rem 0;
+  margin: 0 auto;
   padding: 0.25rem 1.25rem;
   cursor: pointer;
   ${props =>
@@ -30,6 +30,7 @@ const ImagePreview = styled.img`
 `;
 const ErrorParagraph = styled.p`
   color: #ff0000;
+  margin: 0 auto;
 `;
 const HiddenInput = styled.input`
   cursor: pointer;
@@ -38,7 +39,9 @@ const HiddenInput = styled.input`
   left: 0;
   top: 0;
   opacity: 0;
-  margin: 0;
+  margin: 0 auto;
+  height: 3rem;
+  width: 100%;
 `;
 
 const FlexDiv = styled.div`
@@ -78,12 +81,12 @@ class UploadImage extends Component {
       if (!isImage) {
         this.setState({
           error: "Sorry, the file is not an image",
-          images: { imageUrl: "" }
+          images: {}
         });
       } else if (!size) {
         this.setState({
           error: "Sorry, the file is too big",
-          images: { imageUrl: "" }
+          images: {}
         });
       } else {
         this.setState({ error: null });
@@ -104,10 +107,27 @@ class UploadImage extends Component {
     this.uploadImageToParent();
   }
 
+  componentWillReceiveProps() {
+    this.setState({ images: { imageUrl: this.props.imageUrl } });
+  }
+
   render() {
     return (
       <div>
+        <div>
+          {this.state.images.imageUrl && (
+            <ImagePreview src={this.props.imageUrl} />
+          )}
+        </div>
+        <div>
+          <ErrorParagraph>{this.state.error}</ErrorParagraph>
+        </div>
         <FlexDiv>
+          {this.props.editMode && (
+            <UploadBtn delete onClick={this.deleteImage}>
+              Delete Image
+            </UploadBtn>
+          )}
           <UploadBtnWrapper>
             <UploadBtn>{this.props.buttonLabel}</UploadBtn>
             <HiddenInput
@@ -116,18 +136,7 @@ class UploadImage extends Component {
               onChange={this.handleImageChange}
             />
           </UploadBtnWrapper>
-          {this.props.editMode && (
-            <UploadBtn delete onClick={this.deleteImage}>
-              Delete Image
-            </UploadBtn>
-          )}
         </FlexDiv>
-        <div>
-          <ImagePreview src={this.props.imageUrl} />
-        </div>
-        <div>
-          <ErrorParagraph>{this.state.error}</ErrorParagraph>
-        </div>
       </div>
     );
   }

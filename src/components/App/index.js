@@ -15,13 +15,15 @@ import { withAuthentication } from "../Session";
 import Posts from "../Posts";
 
 const Footer = styled.footer`
-  display: flex;
-  align-items: center;
-  background-color: #fb977c;
+  padding: 3rem;
+  background-color: #283033;
   justify-content: center;
   height: 5rem;
   p {
     font-size: 0.85rem;
+    color: #fff;
+    font-family: "Thasadith", sans-serif;
+    letter-spacing: 0.05rem;
   }
 `;
 const App = () => {
@@ -51,6 +53,7 @@ const App = () => {
         </React.Fragment>
       </Router>
       <Footer>
+        <p>Made with passion by 💟 Patricia Garfias 2019</p>
         <p>Currently using React {React.version}</p>
       </Footer>
     </div>

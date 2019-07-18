@@ -3,6 +3,11 @@ import PostItem from "./PostItem";
 import { withFirebase } from "../Firebase";
 import { AuthUserContext } from "../Session";
 import Loader from "react-loader-spinner";
+import styled from "styled-components";
+
+const PostListSection = styled.section`
+  width: 50%;
+`;
 
 class PostsList extends Component {
   constructor(props) {
@@ -121,12 +126,12 @@ class PostsList extends Component {
     return (
       <AuthUserContext.Consumer>
         {authUser => (
-          <div>
+          <PostListSection>
             <h2>Recent Posts</h2>
 
             {loading && (
               <div>
-                <Loader type="CradleLoader" />
+                <Loader type="Watch" color="#00BFFF" />
               </div>
             )}
 
@@ -152,7 +157,7 @@ class PostsList extends Component {
             )}
 
             {!incomingPosts && <div>Sorry, there are no posts... yet.</div>}
-          </div>
+          </PostListSection>
         )}
       </AuthUserContext.Consumer>
     );

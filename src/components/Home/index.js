@@ -2,12 +2,17 @@ import React from "react";
 import Posts from "../Posts";
 import { compose } from "recompose";
 import { withAuthorization, withEmailVerification } from "../Session";
+import styled from "styled-components";
 // import Messages from "../Messages";
 
+const HomeMain = styled.main`
+  padding-top: 10rem;
+`;
+
 const HomePage = () => (
-  <main>
+  <HomeMain>
     <Posts />
-  </main>
+  </HomeMain>
 );
 
 const condition = authUser => !!authUser;

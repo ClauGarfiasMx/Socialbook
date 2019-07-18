@@ -17,10 +17,10 @@ const withAutohorization = condition => Component => {
         authUser => {
           //  If the user is null, it redirects.
           if (!condition(authUser)) {
-            this.props.history.push(ROUTES.SIGN_IN);
+            this.props.history.push(ROUTES.LANDING);
           }
         },
-        () => this.props.history.push(ROUTES.SIGN_IN)
+        () => this.props.history.push(ROUTES.LANDING)
       );
     }
 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { profileegg } from "../../assets";
+import { profileegg, readingwoman } from "../../assets";
 
 import { Link, withRouter } from "react-router-dom";
 import { compose } from "recompose";
@@ -9,14 +9,35 @@ import * as ROLES from "../../constants/roles";
 import UploadImage from "../Utils/UploadImage";
 import styled from "styled-components";
 
-const SignUpSection = styled.section`
-  padding-top: 7.5rem;
+const SignUpSection = styled.main`
+  display: flex;
+  height: 100vh;
 `;
+
+const ImageSignUp = styled.div`
+  height: 100vh;
+  background-image: url(${readingwoman});
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  width: 50%;
+  img {
+    display: none;
+    width: 100%;
+  }
+`;
+const FormContainer = styled.div`
+  padding-top: 6rem;
+  width: 50%;
+`;
+
 const FormSignUp = styled.form`
   display: flex;
   max-width: 20rem;
   margin: auto;
-  padding: 5rem 0.5rem;
+  label:first-child {
+    margin-top: 2rem !important;
+  }
   ${props => props.vertical && "flex-direction: column;"} > * {
     flex: 1;
 
@@ -26,30 +47,60 @@ const FormSignUp = styled.form`
   }
 
   input {
-    padding: 0.5rem;
-    border-radius: 5px;
-    border: 1px solid #b6b6b6;
-  }
-
-  input::placeholder {
-    color: #ff00cb;
+    font-family: "Thasadith", sans-serif;
+    font-size: 1.1rem;
+    line-height: 0.85rem;
+    padding: 0.25rem;
+    border: #dcd6cc 1px solid;
+    ::placeholder {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+    }
   }
 
   button {
-    padding: 0.75rem;
-    border-radius: 0.5rem;
+    padding: 0.5rem;
+    font-family: "Thasadith", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: #283033;
+    color: #ffff;
     border: none;
+    margin: 0;
+    cursor: pointer;
+  }
+  button:disabled,
+  button[disabled] {
+    background-color: #46869e82;
+    color: #ffffffa6 !important;
+    cursor: default;
   }
   img {
     border-radius: 50%;
-    max-width: 10rem;
+    max-width: 8rem;
+    margin: 0 auto;
+  }
+  h2 {
+    margin-bottom: 0;
+  }
+  p {
+    font-family: "Thasadith", sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-right: 0.5rem;
   }
 `;
 const SignUpPage = () => (
-  <SignUpSection>
-    <h2>Sign Up </h2>
-    <SignUpForm />
-  </SignUpSection>
+  <React.Fragment>
+    <SignUpSection>
+      <FormContainer>
+        <SignUpForm />
+      </FormContainer>
+      <ImageSignUp />
+    </SignUpSection>
+  </React.Fragment>
 );
 
 // INITIAL_STATE Captures User Information
@@ -143,9 +194,10 @@ class SignUpFormBase extends Component {
 
     return (
       <FormSignUp vertical onSubmit={this.onSubmit} className="sign-up-form">
+        <h2>Create an Account </h2>
         <UploadImage
           uploadImage={this.uploadProfilePic}
-          buttonLabel={"Upload Profile Picture"}
+          buttonLabel={"Upload profile photo"}
           imageUrl={this.state.profilePic.imageUrl}
         />
         <label>User Name</label>
@@ -178,7 +230,7 @@ class SignUpFormBase extends Component {
           value={passwordTwo}
           onChange={this.onChange}
           type="password"
-          placeholder="Confirmar Contraseña"
+          placeholder="Confirm Password"
         />
         <label>
           I am an administrator user:
