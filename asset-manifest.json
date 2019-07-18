@@ -1,19 +1,21 @@
 {
   "files": {
     "main.css": "/socialbook/static/css/main.701f3788.chunk.css",
-    "main.js": "/socialbook/static/js/main.6f56fe2d.chunk.js",
-    "main.js.map": "/socialbook/static/js/main.6f56fe2d.chunk.js.map",
+    "main.js": "/socialbook/static/js/main.2f10198f.chunk.js",
+    "main.js.map": "/socialbook/static/js/main.2f10198f.chunk.js.map",
     "runtime~main.js": "/socialbook/static/js/runtime~main.650fe429.js",
     "runtime~main.js.map": "/socialbook/static/js/runtime~main.650fe429.js.map",
-    "static/css/2.5ec480d0.chunk.css": "/socialbook/static/css/2.5ec480d0.chunk.css",
-    "static/js/2.6fa9b0ee.chunk.js": "/socialbook/static/js/2.6fa9b0ee.chunk.js",
-    "static/js/2.6fa9b0ee.chunk.js.map": "/socialbook/static/js/2.6fa9b0ee.chunk.js.map",
+    "static/css/2.d2845be8.chunk.css": "/socialbook/static/css/2.d2845be8.chunk.css",
+    "static/js/2.cb6da637.chunk.js": "/socialbook/static/js/2.cb6da637.chunk.js",
+    "static/js/2.cb6da637.chunk.js.map": "/socialbook/static/js/2.cb6da637.chunk.js.map",
     "index.html": "/socialbook/index.html",
-    "precache-manifest.b625eb0ffc8f8b27fc4e1da1d1636c78.js": "/socialbook/precache-manifest.b625eb0ffc8f8b27fc4e1da1d1636c78.js",
+    "precache-manifest.45f14845876b1b86204aa33f60f4a0a2.js": "/socialbook/precache-manifest.45f14845876b1b86204aa33f60f4a0a2.js",
     "service-worker.js": "/socialbook/service-worker.js",
-    "static/css/2.5ec480d0.chunk.css.map": "/socialbook/static/css/2.5ec480d0.chunk.css.map",
+    "static/css/2.d2845be8.chunk.css.map": "/socialbook/static/css/2.d2845be8.chunk.css.map",
     "static/css/main.701f3788.chunk.css.map": "/socialbook/static/css/main.701f3788.chunk.css.map",
     "static/media/book.png": "/socialbook/static/media/book.74d14921.png",
-    "static/media/chair-chat-conversation.jpg": "/socialbook/static/media/chair-chat-conversation.48eabd59.jpg"
+    "static/media/bookcase-books-bookshelf.png": "/socialbook/static/media/bookcase-books-bookshelf.d980c75b.png",
+    "static/media/chair-chat-conversation.jpg": "/socialbook/static/media/chair-chat-conversation.48eabd59.jpg",
+    "static/media/profilepicegg.jpg": "/socialbook/static/media/profilepicegg.f3fcf671.jpg"
   }
 }
