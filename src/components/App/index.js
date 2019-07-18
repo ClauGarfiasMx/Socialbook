@@ -33,11 +33,6 @@ const App = () => {
         <React.Fragment>
           {/* Navigation uses AuthContext to consume the authenticated user*/}
           <Navigation />
-          {/* <MainTitle>
-            <h1>Socialbook</h1>{" "}
-          </MainTitle>
-          <h2>Read {"&"} Share</h2> */}
-
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route exact path={ROUTES.SIGN_IN} component={SignInPage} />

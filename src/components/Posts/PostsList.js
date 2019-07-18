@@ -131,7 +131,7 @@ class PostsList extends Component {
 
             {loading && (
               <div>
-                <Loader type="Watch" color="#00BFFF" />
+                <Loader type="Watch" color="#86c6e7" />
               </div>
             )}
 

@@ -11,14 +11,13 @@ import styled from "styled-components";
 
 const SignUpSection = styled.main`
   display: flex;
-  height: 100vh;
 `;
 
 const ImageSignUp = styled.div`
   height: 100vh;
   background-image: url(${readingwoman});
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
+  background-position: left;
+  background-repeat: no-repeat;
   background-size: cover;
   width: 50%;
   img {
@@ -27,14 +26,17 @@ const ImageSignUp = styled.div`
   }
 `;
 const FormContainer = styled.div`
+  display: flex;
   padding-top: 6rem;
   width: 50%;
 `;
 
 const FormSignUp = styled.form`
+  background-color: #ffffff69;
   display: flex;
-  max-width: 20rem;
   margin: auto;
+  padding: 1rem 2rem 2rem 2rem;
+  width: 50%;
   label:first-child {
     margin-top: 2rem !important;
   }
@@ -42,7 +44,7 @@ const FormSignUp = styled.form`
     flex: 1;
 
     &:not(:first-child) {
-      ${props => (props.vertical ? "margin-top" : "margin-left")}: 0.5rem;
+      ${props => (props.vertical ? "margin-top" : "margin-left")}: 0.75rem;
     }
   }
 
@@ -82,7 +84,7 @@ const FormSignUp = styled.form`
     margin: 0 auto;
   }
   h2 {
-    margin-bottom: 0;
+    margin: 0 auto;
   }
   p {
     font-family: "Thasadith", sans-serif;
@@ -90,6 +92,10 @@ const FormSignUp = styled.form`
     text-transform: uppercase;
     font-weight: 600;
     margin-right: 0.5rem;
+  }
+  label {
+    text-align: left;
+    margin-bottom: -0.5rem !important;
   }
 `;
 const SignUpPage = () => (
@@ -200,7 +206,7 @@ class SignUpFormBase extends Component {
           buttonLabel={"Upload profile photo"}
           imageUrl={this.state.profilePic.imageUrl}
         />
-        <label>User Name</label>
+        <label>User Name:</label>
         <input
           name="username"
           value={username}
@@ -208,7 +214,7 @@ class SignUpFormBase extends Component {
           type="text"
           placeholder="User Name"
         />
-        <label>Email</label>
+        <label>Email:</label>
         <input
           name="email"
           value={email}
@@ -216,7 +222,7 @@ class SignUpFormBase extends Component {
           type="text"
           placeholder="Email"
         />
-        <label>Password</label>
+        <label>Password:</label>
         <input
           name="passwordOne"
           value={passwordOne}
@@ -224,7 +230,7 @@ class SignUpFormBase extends Component {
           type="password"
           placeholder="Password"
         />
-        <label>Confirm Password</label>
+        <label>Confirm Password:</label>
         <input
           name="passwordTwo"
           value={passwordTwo}
