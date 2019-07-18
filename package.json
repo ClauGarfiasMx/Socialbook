@@ -9,6 +9,7 @@
     "react-dom": "^16.8.6",
     "react-loader-spinner": "^2.3.0",
     "react-router-dom": "^5.0.1",
+    "react-router-hash-link": "^1.2.1",
     "react-scripts": "3.0.1",
     "recompose": "^0.30.0",
     "styled-components": "^4.3.1"

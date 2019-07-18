@@ -2,22 +2,23 @@ import React from "react";
 import { SignUpLink } from "../SignUp";
 import { SignInLink, SignInForm } from "../SignIn";
 import { PasswordForgetLink } from "../PasswordForget";
-import { book, chairchat } from "../../assets";
+import { book, chairchat, bookshelf } from "../../assets";
 import device from "../../css";
 import styled from "styled-components";
 
 const HeaderSection = styled.header`
   background-image: linear-gradient(
     to bottom,
-    #f0e0ca,
-    #fbe4ba,
-    #ffeaa9,
-    #fff299,
-    #fffa89
+    #fffa89,
+    #fff085,
+    #fee781,
+    #fddd7e,
+    #fbd47c
   );
   height: 125vh;
+
   @media ${device.tablet} {
-    height: 100vh;
+    height: 120vh;
   }
   div {
     position: -webkit-sticky;
@@ -46,7 +47,7 @@ const HeaderSection = styled.header`
     }
   }
   img {
-    margin: 28vh auto 0 auto;
+    margin: 35vh auto -20vh auto;
     width: 40%;
     z-index: 1;
     position: relative;
@@ -62,15 +63,16 @@ const HeaderSection = styled.header`
 const IntroSection = styled.section`
   background-image: linear-gradient(
     to bottom,
-    #fffa89,
-    #ffef94,
-    #ffe6a1,
-    #ffdfaf,
-    #ffdabd
+    #fbd47c,
+    #fcce7b,
+    #fcc97b,
+    #fcc37c,
+    #fbbe7c
   );
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 120vh;
+  padding-bottom: 25vh;
 
   a {
     color: #000;
@@ -82,23 +84,33 @@ const IntroSection = styled.section`
     padding: 0.5rem;
   }
   p {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 40vh;
     font-size: 1.25rem;
     max-width: 50%;
     margin: auto;
+
     @media ${device.laptop} {
       max-width: 80%;
     }
+  }
+  img {
+    max-width: 20%;
+    z-index: 1;
+    margin: -30vh auto 0 auto;
+    padding-bottom: 50vh;
   }
 `;
 
 const FooterSection = styled.footer`
   background-image: linear-gradient(
     to bottom,
-    #ffdabd,
-    #ffceb4,
-    #ffc2ae,
-    #ffb6aa,
-    #ffaaaa
+    #fbbe7c,
+    #fcb47a,
+    #fdaa79,
+    #fca17a,
+    #fb977c
   );
   display: flex;
   height: 50vh;
@@ -133,11 +145,13 @@ const ParallaxBackground = styled.div`
     color: #ffff;
     border: none;
     margin-top: 0.75rem !important;
+    cursor: pointer;
   }
   button:disabled,
   button[disabled] {
     background-color: #00000026;
     color: #0000002e;
+    cursor: default;
   }
   form {
     display: flex;
@@ -156,14 +170,14 @@ const ParallaxBackground = styled.div`
   }
 `;
 
-const SignInSection = styled.section`
-  height: 50vh;
-  background-color: transparent;
-`;
+// const SignInSection = styled.section`
+//   height: 50vh;
+//   background-color: transparent;
+// `;
 
 const Landing = () => (
   <div>
-    <HeaderSection>
+    <HeaderSection id="main-header">
       <div>
         <h1>Socialbook</h1>
         <h2>Share {"&"} Read</h2>
@@ -180,9 +194,9 @@ const Landing = () => (
         Save your favorite readings, share them with friends and find out what
         they are reading.
       </p>
+      <img src={bookshelf} />
     </IntroSection>
     <ParallaxBackground id="signin-section">
-      {" "}
       <div>
         <h2>Sign In</h2>
         <SignInForm />
@@ -194,27 +208,8 @@ const Landing = () => (
         </p>
       </div>
     </ParallaxBackground>
-    {/* <SignInSection>
-      {" "}
-      <div>
-        <h2>Sign In</h2>
-        <SignInForm />
-        <div>
-          <PasswordForgetLink />
-        </div>
-        <div>
-          <SignUpLink />
-        </div>
-      </div>
-    </SignInSection> */}
-    <FooterSection>
-      {/* <h2>
-        Welcome to Socialbook, ¿Would you like to <SignUpLink />?
-      </h2>
-      <h2>
-        Or <SignInLink />
-      </h2> */}
-    </FooterSection>
+
+    <FooterSection />
   </div>
 );
 

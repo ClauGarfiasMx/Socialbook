@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { profileegg } from "../../assets";
+
 import { Link, withRouter } from "react-router-dom";
 import { compose } from "recompose";
 import { withFirebase } from "../Firebase";
@@ -7,11 +9,14 @@ import * as ROLES from "../../constants/roles";
 import UploadImage from "../Utils/UploadImage";
 import styled from "styled-components";
 
+const SignUpSection = styled.section`
+  padding-top: 7.5rem;
+`;
 const FormSignUp = styled.form`
   display: flex;
   max-width: 20rem;
   margin: auto;
-  padding: 0.5rem;
+  padding: 5rem 0.5rem;
   ${props => props.vertical && "flex-direction: column;"} > * {
     flex: 1;
 
@@ -35,12 +40,16 @@ const FormSignUp = styled.form`
     border-radius: 0.5rem;
     border: none;
   }
+  img {
+    border-radius: 50%;
+    max-width: 10rem;
+  }
 `;
 const SignUpPage = () => (
-  <div>
+  <SignUpSection>
     <h2>Sign Up </h2>
     <SignUpForm />
-  </div>
+  </SignUpSection>
 );
 
 // INITIAL_STATE Captures User Information
@@ -53,8 +62,7 @@ const INITIAL_STATE = {
   passwordTwo: "",
   profilePic: {
     imageName: "",
-    imageUrl:
-      "https://claudiagarfias.works/laboratoria/visitors/assets/kisspng-computer-icons.png"
+    imageUrl: profileegg
   }
 };
 

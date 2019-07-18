@@ -17,7 +17,7 @@ import Posts from "../Posts";
 const Footer = styled.footer`
   display: flex;
   align-items: center;
-  background-color: #ffaaaa;
+  background-color: #fb977c;
   justify-content: center;
   height: 5rem;
   p {
