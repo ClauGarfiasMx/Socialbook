@@ -9,12 +9,12 @@ const UploadBtnWrapper = styled.div`
 `;
 
 const UploadBtn = styled.button`
-  background-color: white;
+  background-color: #31739d !important;
   border: 1px solid gray;
   font-size: 14px;
   color: gray;
-  margin: 0 auto;
-  padding: 0.25rem 1.25rem;
+  margin: 0 auto 0.5rem auto;
+  padding: 0.15rem !important;
   cursor: pointer;
   ${props =>
     props.delete &&

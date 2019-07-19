@@ -7,18 +7,44 @@ const ImageFromPost = styled.img`
   max-width: 15rem;
 `;
 const TextArea = styled.textarea`
-  background-color: #fff !important;
+  background-color: #fff;
   border: 1px solid #b6b6b6;
   -moz-border-radius: 1px solid #b6b6b6
   -webkit-border-radius:1px solid #b6b6b6
   border-radius: 5px;
   font-family: Open Sans, Arial, sans-serif;
   font-size: 15px;
-  color: #404b56 !important;
-  padding: 16px !important;
+  color: #404b56;
+  padding: 16px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+`;
+
+const PostItemContainer = styled.article`
+  padding: 1rem 2rem;
+  background-color: #fff;
+  margin: 1rem;
+`;
+
+const FlexRowDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  * {
+    margin: 0.5rem;
+  }
+  p {
+    text-align: left;
+  }
+`;
+
+const MonoSpaceP = styled.p`
+  span {
+    font-family: "Thasadith", sans-serif;
+    letter-spacing: 0.025rem;
+    font-weight: 600;
+  }
 `;
 
 class PostItem extends Component {
@@ -78,7 +104,7 @@ class PostItem extends Component {
     } = this.props;
     const { editMode, editText } = this.state;
     return (
-      <React.Fragment>
+      <PostItemContainer>
         {editMode ? (
           <div>
             <TextArea
@@ -128,28 +154,31 @@ class PostItem extends Component {
         ) : (
           incomingPosts && (
             <div>
-              <p>
-                <strong>{post.username}</strong> shared on{" "}
-                <i>
-                  {post.createdAt
-                    .toDate()
-                    .toString()
-                    .slice(0, 10)}{" "}
-                </i>
-                at
-                <i>
-                  {post.createdAt
-                    .toDate()
-                    .toLocaleString()
-                    .slice(-9, -1)}
-                </i>
-                {post.editedAt && <i> (Edited) </i>}:
-              </p>
-              <p>
-                <i>{post.text} </i>
-              </p>
-              <ImageFromPost src={post.images.imageUrl} />
-              <p />
+              <div>
+                <MonoSpaceP>
+                  <strong>{post.username}</strong>
+                  <span>
+                    {" "}
+                    shared on
+                    {post.createdAt
+                      .toDate()
+                      .toString()
+                      .slice(0, 10)}{" "}
+                    at
+                    {post.createdAt
+                      .toDate()
+                      .toLocaleString()
+                      .slice(-9, -1)}
+                    {post.editedAt && <i> (Edited) </i>}:
+                  </span>
+                </MonoSpaceP>
+              </div>
+              <FlexRowDiv>
+                <MonoSpaceP>
+                  <span>{post.text} </span>
+                </MonoSpaceP>{" "}
+                <ImageFromPost src={post.images.imageUrl} />
+              </FlexRowDiv>
               <p>
                 <span role="img" aria-label="Books">
                   📚
@@ -157,11 +186,9 @@ class PostItem extends Component {
                 Bookits: {post.bookIt}
               </p>
               <button onClick={() => bookIt(post)}>
-                I{" "}
                 <span role="img" aria-label="Book">
                   📖
                 </span>{" "}
-                it!
               </button>
               {authUser.uid === post.authorID && (
                 <div>
@@ -190,11 +217,10 @@ class PostItem extends Component {
                 post={post}
                 commentPost={commentPost}
               />
-              <hr />
             </div>
           )
         )}
-      </React.Fragment>
+      </PostItemContainer>
     );
   }
 }

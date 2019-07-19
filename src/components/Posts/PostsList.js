@@ -7,6 +7,11 @@ import styled from "styled-components";
 
 const PostListSection = styled.section`
   width: 50%;
+  margin: auto;
+  background-color: #fff;
+  h2 {
+    padding-top: 4rem;
+  }
 `;
 
 class PostsList extends Component {

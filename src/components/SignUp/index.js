@@ -25,6 +25,7 @@ const ImageSignUp = styled.div`
     width: 100%;
   }
 `;
+
 const FormContainer = styled.div`
   display: flex;
   padding-top: 6rem;
@@ -35,8 +36,8 @@ const FormSignUp = styled.form`
   background-color: #ffffff69;
   display: flex;
   margin: auto;
-  padding: 1rem 2rem 2rem 2rem;
-  width: 50%;
+  padding: 1rem 3rem 2rem 3rem;
+  width: 40%;
   label:first-child {
     margin-top: 2rem !important;
   }

@@ -6,7 +6,7 @@ import styled from "styled-components";
 // import Messages from "../Messages";
 
 const HomeMain = styled.main`
-  padding-top: 10rem;
+  padding-top: 6rem;
 `;
 
 const HomePage = () => (
