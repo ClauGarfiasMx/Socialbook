@@ -4,7 +4,8 @@ import CommentItem from "./CommentItem";
 import styled from "styled-components";
 
 const ImageFromPost = styled.img`
-  max-width: 15rem;
+  width: 50%;
+  height: auto;
 `;
 const TextArea = styled.textarea`
   background-color: #fff;
@@ -31,11 +32,10 @@ const FlexRowDiv = styled.div`
   display: flex;
   justify-content: space-between;
 
-  * {
-    margin: 0.5rem;
-  }
   p {
+    margin: 0.5rem;
     text-align: left;
+    width: 50%;
   }
 `;
 

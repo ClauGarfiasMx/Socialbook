@@ -7,11 +7,15 @@ import styled from "styled-components";
 
 const PostListSection = styled.section`
   width: 50%;
-  margin: auto;
-  background-color: #fff;
+  margin: 2rem auto;
+  background-color: #ffffffcf;
   h2 {
     padding-top: 4rem;
   }
+`;
+
+const LoaderDiv = styled.div`
+  padding: 2rem;
 `;
 
 class PostsList extends Component {
@@ -135,9 +139,9 @@ class PostsList extends Component {
             <h2>Recent Posts</h2>
 
             {loading && (
-              <div>
+              <LoaderDiv>
                 <Loader type="Watch" color="#86c6e7" />
-              </div>
+              </LoaderDiv>
             )}
 
             {!loading && incomingPosts && (
