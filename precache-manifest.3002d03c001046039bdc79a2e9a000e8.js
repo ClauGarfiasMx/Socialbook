@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4e7fa3843d6467697a027de364854e0d",
+    "revision": "fa037e874d1dfd227d51ec4ccf17ee87",
     "url": "/socialbook/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/socialbook/static/css/2.5ec480d0.chunk.css"
   },
   {
-    "revision": "a4ba0e3761cfa867be5f",
+    "revision": "7174124c286233891889",
     "url": "/socialbook/static/css/main.23d73c06.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/socialbook/static/js/2.5b38baf6.chunk.js"
   },
   {
-    "revision": "a4ba0e3761cfa867be5f",
-    "url": "/socialbook/static/js/main.15eaae43.chunk.js"
+    "revision": "7174124c286233891889",
+    "url": "/socialbook/static/js/main.9497d469.chunk.js"
   },
   {
     "revision": "45d55a2ea6bcd97ed85a",
@@ -32,8 +32,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/socialbook/static/media/bookcase-books-bookshelf.d980c75b.png"
   },
   {
-    "revision": "f6ee8236f4849ae07d982b42fbcdf563",
-    "url": "/socialbook/static/media/chair-chat-conversation.f6ee8236.jpg"
+    "revision": "3da7d9c12ed2e52a8d1549047db1fa7f",
+    "url": "/socialbook/static/media/chair-chat-conversation.3da7d9c1.jpg"
   },
   {
     "revision": "dc985860ab0ec86ecb4b2fb5f487dc3d",
