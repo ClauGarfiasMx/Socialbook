@@ -3,20 +3,7 @@ import PostItem from "./PostItem";
 import { withFirebase } from "../Firebase";
 import { AuthUserContext } from "../Session";
 import Loader from "react-loader-spinner";
-import styled from "styled-components";
-
-const PostListSection = styled.section`
-  width: 50%;
-  margin: 2rem auto;
-  background-color: #ffffffcf;
-  h2 {
-    padding-top: 4rem;
-  }
-`;
-
-const LoaderDiv = styled.div`
-  padding: 2rem;
-`;
+import { PostListSection, LoaderDiv } from "./stylePostList";
 
 class PostsList extends Component {
   constructor(props) {

@@ -1,51 +1,13 @@
 import React, { Component } from "react";
 import UploadImage from "./UploadImage";
 import CommentItem from "./CommentItem";
-import styled from "styled-components";
-
-const ImageFromPost = styled.img`
-  width: 50%;
-  height: auto;
-`;
-const TextArea = styled.textarea`
-  background-color: #fff;
-  border: 1px solid #b6b6b6;
-  -moz-border-radius: 1px solid #b6b6b6
-  -webkit-border-radius:1px solid #b6b6b6
-  border-radius: 5px;
-  font-family: Open Sans, Arial, sans-serif;
-  font-size: 15px;
-  color: #404b56;
-  padding: 16px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-`;
-
-const PostItemContainer = styled.article`
-  padding: 1rem 2rem;
-  background-color: #fff;
-  margin: 1rem;
-`;
-
-const FlexRowDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-
-  p {
-    margin: 0.5rem;
-    text-align: left;
-    width: 50%;
-  }
-`;
-
-const MonoSpaceP = styled.p`
-  span {
-    font-family: "Thasadith", sans-serif;
-    letter-spacing: 0.025rem;
-    font-weight: 600;
-  }
-`;
+import {
+  ImageFromPost,
+  TextArea,
+  PostItemContainer,
+  FlexRowDiv,
+  MonoSpaceP
+} from "./stylesPostItem";
 
 class PostItem extends Component {
   constructor(props) {
@@ -56,11 +18,9 @@ class PostItem extends Component {
       error: null,
       images: this.props.post.images
     };
-    // this.handleImageEdit = this.handleImageEdit.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
     this.editPost = this.editPost.bind(this);
     this.cancelEdit = this.cancelEdit.bind(this);
-    // this.deleteImage = this.deleteImage.bind(this);
   }
   editPost() {
     this.setState({ editMode: true });
@@ -78,10 +38,6 @@ class PostItem extends Component {
   uploadImage(images) {
     this.setState({ images: images });
   }
-
-  // deleteImage() {
-  //   this.setState({ images: {} });
-  // }
 
   saveEdit = () => {
     this.props.editPost(
@@ -155,16 +111,16 @@ class PostItem extends Component {
           incomingPosts && (
             <div>
               <div>
-                <MonoSpaceP>
+                <MonoSpaceP light>
                   <strong>{post.username}</strong>
                   <span>
                     {" "}
-                    shared on
+                    shared on{" "}
                     {post.createdAt
                       .toDate()
                       .toString()
                       .slice(0, 10)}{" "}
-                    at
+                    at{" "}
                     {post.createdAt
                       .toDate()
                       .toLocaleString()
@@ -177,7 +133,9 @@ class PostItem extends Component {
                 <MonoSpaceP>
                   <span>{post.text} </span>
                 </MonoSpaceP>{" "}
-                <ImageFromPost src={post.images.imageUrl} />
+                <ImageFromPost>
+                  <img src={post.images.imageUrl} />
+                </ImageFromPost>
               </FlexRowDiv>
               <p>
                 <span role="img" aria-label="Books">
@@ -187,7 +145,7 @@ class PostItem extends Component {
               </p>
               <button onClick={() => bookIt(post)}>
                 <span role="img" aria-label="Book">
-                  📖
+                  I 📖 it!
                 </span>{" "}
               </button>
               {authUser.uid === post.authorID && (

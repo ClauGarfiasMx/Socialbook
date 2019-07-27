@@ -1,52 +1,6 @@
 import React, { Component } from "react";
-import styled, { css } from "styled-components";
+import * as Style from "./UploadImageStyles";
 
-const UploadBtnWrapper = styled.div`
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-  margin: 0 auto;
-`;
-
-const UploadBtn = styled.button`
-  background-color: #31739d !important;
-  border: 1px solid gray;
-  font-size: 14px;
-  color: gray;
-  margin: 0 auto 0.5rem auto;
-  padding: 0.15rem !important;
-  cursor: pointer;
-  ${props =>
-    props.delete &&
-    css`
-      background: gray;
-      border: none !important;
-      color: white;
-    `}
-`;
-
-const ImagePreview = styled.img`
-  max-width: 30%;
-`;
-const ErrorParagraph = styled.p`
-  color: #ff0000;
-  margin: 0 auto;
-`;
-const HiddenInput = styled.input`
-  cursor: pointer;
-  font-size: 100px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-  margin: 0 auto;
-  height: 3rem;
-  width: 100%;
-`;
-
-const FlexDiv = styled.div`
-  display: flex;
-`;
 const INITIAL_STATE = {
   error: null,
   images: {}
@@ -107,36 +61,38 @@ class UploadImage extends Component {
     this.uploadImageToParent();
   }
 
-  componentWillReceiveProps() {
+  componentDidReceiveProps() {
     this.setState({ images: { imageUrl: this.props.imageUrl } });
   }
-
+  componentDidMount() {
+    this.setState({ images: { imageUrl: this.props.imageUrl } });
+  }
   render() {
     return (
       <div>
         <div>
           {this.state.images.imageUrl && (
-            <ImagePreview src={this.props.imageUrl} />
+            <Style.ImagePreview src={this.props.imageUrl} />
           )}
         </div>
         <div>
-          <ErrorParagraph>{this.state.error}</ErrorParagraph>
+          <Style.ErrorParagraph>{this.state.error}</Style.ErrorParagraph>
         </div>
-        <FlexDiv>
+        <Style.FlexDiv>
           {this.props.editMode && (
-            <UploadBtn delete onClick={this.deleteImage}>
+            <Style.UploadBtn delete onClick={this.deleteImage}>
               Delete Image
-            </UploadBtn>
+            </Style.UploadBtn>
           )}
-          <UploadBtnWrapper>
-            <UploadBtn>{this.props.buttonLabel}</UploadBtn>
-            <HiddenInput
+          <Style.UploadBtnWrapper>
+            <Style.UploadBtn>{this.props.buttonLabel}</Style.UploadBtn>
+            <Style.HiddenInput
               type="file"
               accept="image/*"
               onChange={this.handleImageChange}
             />
-          </UploadBtnWrapper>
-        </FlexDiv>
+          </Style.UploadBtnWrapper>
+        </Style.FlexDiv>
       </div>
     );
   }

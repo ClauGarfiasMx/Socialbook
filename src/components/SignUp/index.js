@@ -80,7 +80,6 @@ const FormSignUp = styled.form`
     cursor: default;
   }
   img {
-    border-radius: 50%;
     max-width: 8rem;
     margin: 0 auto;
   }
@@ -99,6 +98,7 @@ const FormSignUp = styled.form`
     margin-bottom: -0.5rem !important;
   }
 `;
+
 const SignUpPage = () => (
   <React.Fragment>
     <SignUpSection>
