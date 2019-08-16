@@ -56,7 +56,9 @@ const NavigationNonAuth = () => (
           <Link to={ROUTES.PASSWORD_FORGET}>Forgot Password?</Link>
         </span>
         <span>
-          <Link to={ROUTES.SIGN_UP}>New? Sign Up</Link>
+          <Link to={ROUTES.SIGN_UP} onClick={() => window.scrollTo(0, 0)}>
+            New? Sign Up
+          </Link>
         </span>
       </FlexSpan>
     </div>

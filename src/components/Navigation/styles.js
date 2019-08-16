@@ -87,7 +87,7 @@ const MainMenu = styled.nav`
     button:disabled,
     button[disabled] {
       background-color: #28303330;
-      color: #2830330002e;
+      color: #2830337d;
       cursor: default;
     }
   }

@@ -61,9 +61,6 @@ class UploadImage extends Component {
     this.uploadImageToParent();
   }
 
-  componentDidReceiveProps() {
-    this.setState({ images: { imageUrl: this.props.imageUrl } });
-  }
   componentDidMount() {
     this.setState({ images: { imageUrl: this.props.imageUrl } });
   }
